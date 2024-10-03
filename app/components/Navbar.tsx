@@ -1,6 +1,8 @@
 import { Box, HStack, Input, List, ListItem } from '@chakra-ui/react';
 import { Link } from '@remix-run/react';
 
+// testing
+
 const Navbar = () => {
   return (
     <Box as='nav' p={5}>
