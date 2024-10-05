@@ -1,4 +1,12 @@
-import { Box, HStack, VStack, Image, Text, Button, Icon } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  VStack,
+  Image,
+  Text,
+  Button,
+  Icon,
+} from '@chakra-ui/react';
 import { useLoaderData } from '@remix-run/react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import mockData from '~/temp/mockData.json';
@@ -16,7 +24,10 @@ const ItemPage = () => {
   console.log(item);
   return (
     <Box h={'100%'}>
-      <HStack justifyContent={'space-around'} h={'100%'}>
+      <HStack
+        justifyContent={'space-around'}
+        h={'100%'}
+      >
         <VStack>
           <Image
             src={item.itemImage}

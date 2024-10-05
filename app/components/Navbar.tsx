@@ -1,4 +1,13 @@
-import { Box, HStack, Input, List, ListItem, Image, Link as ChakraLink, Icon } from '@chakra-ui/react';
+import {
+  Box,
+  HStack,
+  Input,
+  List,
+  ListItem,
+  Image,
+  Link as ChakraLink,
+  Icon,
+} from '@chakra-ui/react';
 import { Link } from '@remix-run/react';
 import { FaDoorOpen, FaShoppingCart } from 'react-icons/fa';
 // testing
@@ -46,8 +55,13 @@ const Navbar = () => {
 
           <ListItem>
             <Link to='/login'>
-            <Icon mr={2} name='login' as={FaDoorOpen}/>
-            {"Login"}</Link>
+              <Icon
+                mr={2}
+                name='login'
+                as={FaDoorOpen}
+              />
+              {'Login'}
+            </Link>
           </ListItem>
 
           <ListItem>

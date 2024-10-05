@@ -1,4 +1,4 @@
-import {Box } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import type { MetaFunction } from '@remix-run/node';
 import ItemDisplayGrid from '~/components/ItemDisplayGrid';
 import mockData from '../temp/mockData.json';
@@ -12,7 +12,9 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   console.log(mockData);
-  return <Box>
-    <ItemDisplayGrid itemsToDisplay={mockData}/>
-  </Box>;
+  return (
+    <Box>
+      <ItemDisplayGrid itemsToDisplay={mockData} />
+    </Box>
+  );
 }
