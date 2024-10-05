@@ -1,6 +1,7 @@
 import {Box } from '@chakra-ui/react';
 import type { MetaFunction } from '@remix-run/node';
-import Navbar from '~/components/Navbar';
+import ItemDisplayGrid from '~/components/ItemDisplayGrid';
+import mockData from '../temp/mockData.json';
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,7 +11,8 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
-  return <Box as='main'>
-    <Navbar />
+  console.log(mockData);
+  return <Box>
+    <ItemDisplayGrid itemsToDisplay={mockData}/>
   </Box>;
 }

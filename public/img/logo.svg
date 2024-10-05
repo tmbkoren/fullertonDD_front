@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="100mm"
+   height="100mm"
+   viewBox="0 0 100 99.999995"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
+   sodipodi:docname="drawing.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#111111"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     inkscape:zoom="1.3078598"
+     inkscape:cx="235.11694"
+     inkscape:cy="155.98002"
+     inkscape:window-width="1920"
+     inkscape:window-height="1012"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <rect
+       x="36.647419"
+       y="159.56412"
+       width="273.47576"
+       height="199.81654"
+       id="rect2" />
+    <rect
+       x="15.163728"
+       y="34.135562"
+       width="353.02784"
+       height="121.044"
+       id="rect1" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';fill:#000000;stroke-width:0.271404"
+       x="11.968618"
+       y="89.223885"
+       id="text3"
+       transform="scale(1.1147536,0.89705923)"><tspan
+         sodipodi:role="line"
+         id="tspan3"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans Bold';stroke-width:0.271404"
+         x="11.968618"
+         y="89.223885">Depot</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';fill:#000000;stroke-width:0.271404"
+       x="11.883564"
+       y="69.063904"
+       id="text3-1"
+       transform="scale(1.1147536,0.89705923)"><tspan
+         sodipodi:role="line"
+         id="tspan3-2"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans Bold';stroke-width:0.271404"
+         x="11.883564"
+         y="69.063904">Deal</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.8703px;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman';fill:#000000;stroke-width:0.214436"
+       x="6.568481"
+       y="27.821198"
+       id="text3-1-3"
+       transform="scale(0.76990639,1.2988592)"><tspan
+         sodipodi:role="line"
+         id="tspan3-2-6"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.8703px;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman';stroke-width:0.214436"
+         x="6.568481"
+         y="27.821198">FULLERTON</tspan></text>
+  </g>
+</svg>
