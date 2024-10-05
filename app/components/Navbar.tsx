@@ -7,12 +7,16 @@ import {
   Image,
   Link as ChakraLink,
   Icon,
+  useColorMode,
+  IconButton,
 } from '@chakra-ui/react';
 import { Link } from '@remix-run/react';
 import { FaDoorOpen, FaShoppingCart } from 'react-icons/fa';
+import { MdDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 // testing
 
 const Navbar = () => {
+  const {colorMode, toggleColorMode} = useColorMode();
   return (
     <Box
       as='nav'
@@ -73,6 +77,16 @@ const Navbar = () => {
               />
               {'Cart'}
             </Link>
+          </ListItem>
+          <ListItem ml={3}>
+            <IconButton
+              icon={
+                colorMode === 'light' ? <MdDarkMode /> : <MdOutlineWbSunny />
+              }
+              bg={'transparent'}
+              aria-label='Toggle Dark Mode'
+              onClick={toggleColorMode}
+            />
           </ListItem>
         </HStack>{' '}
       </List>
