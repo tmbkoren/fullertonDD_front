@@ -2,14 +2,13 @@ import { Grid } from '@chakra-ui/react';
 import ItemDisplay from './ItemDisplay';
 
 const ItemDisplayGrid = ({ itemsToDisplay }) => {
-  console.log(itemsToDisplay);
   return (
     <Grid
       templateColumns={{
-        sm: 'repeat(2, minmax(100px, 1fr))',
-        md: 'repeat(2, minmax(200px, 1fr))',
-        lg: 'repeat(3, minmax(200px, 1fr))',
-        xl: 'repeat(4, minmax(300px, 1fr))',
+        sm: 'repeat(2, minmax(150px, 1fr))',
+        md: 'repeat(3, minmax(150px, 1fr))',
+        lg: 'repeat(5, minmax(150px, 1fr))',
+        xl: 'repeat(6, minmax(150px, 1fr))',
       }}
       p={{
         base: 1,
