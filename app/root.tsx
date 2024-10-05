@@ -19,7 +19,7 @@ import Navbar from './components/Navbar';
 export const meta: MetaFunction = () => {
   return [
     { charSet: 'utf-8' },
-    { title: 'New Remix App' },
+    { title: 'Fullerton Deal Depot' },
     { name: 'viewport', content: 'width=device-width, initial-scale=1' },
   ];
 };
