@@ -12,13 +12,14 @@ import {
 } from '@chakra-ui/react';
 import { Link } from '@remix-run/react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
+import { Product } from '~/util/types';
 
-const ItemDisplay = ({
-  itemName,
-  itemPrice,
-  itemRating,
-  itemImage,
-  itemId,
+interface ItemDisplayProps {
+  item: Product
+}
+
+const ItemDisplay: React.FC<ItemDisplayProps> = ({
+  item,
 }) => {
   return (
     <GridItem>
@@ -27,22 +28,22 @@ const ItemDisplay = ({
           <Box>
             <ChakraLink
               as={Link}
-              to={`/item/${itemId}`}
+              to={`/product/${item.id}`}
             >
               <Image
-                src={itemImage}
-                alt={itemName}
+                src={'http://localhost:3000' + item.image_url[0]}
+                alt={item.name}
                 borderRadius={'md'}
               />
             </ChakraLink>
           </Box>
           <VStack>
             <HStack justifyContent={'space-between'}>
-              <Text as={'b'}>{itemName}</Text>
-              <Text as={'b'}>{'$' + itemPrice}</Text>
+              <Text as={'b'}>{item.name}</Text>
+              <Text as={'b'}>{'$' + item.price}</Text>
             </HStack>
             <HStack>
-              {Array.from({ length: itemRating }).map((_, i) => (
+              {Array.from({ length: 4 }).map((_, i) => (
                 <Icon
                   key={i}
                   name='star'
@@ -50,7 +51,7 @@ const ItemDisplay = ({
                   as={FaStar}
                 />
               ))}
-              {Array.from({ length: 5 - itemRating }).map((_, i) => (
+              {Array.from({ length: 5 - 4 }).map((_, i) => (
                 <Icon
                   key={i}
                   name='star'

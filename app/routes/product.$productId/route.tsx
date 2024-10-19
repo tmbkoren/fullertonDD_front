@@ -7,20 +7,25 @@ import {
   Button,
   Icon,
 } from '@chakra-ui/react';
+import { LoaderFunctionArgs } from '@remix-run/node';
 import { useLoaderData } from '@remix-run/react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
-import mockData from '~/temp/mockData.json';
 
-export const loader = async ({ params }) => {
-  console.log(params);
-  console.log(mockData);
-  const itemId = params.itemId;
-  const item = mockData.find((item) => item.itemId == itemId);
-  return item ? { item } : null;
+export const loader = async ({ params }: LoaderFunctionArgs) => {
+  const productId = params.productId;
+  const data = await fetch(
+    process.env.BACKEND_DEV_URL + '/api/products/getOne/' + productId
+  );
+  const item = await data.json();
+  const itemImages = item.image_url.map((url: string) => {
+    return process.env.BACKEND_DEV_URL + url;
+  });
+  return item ? { item, itemImages } : null;
 };
 
 const ItemPage = () => {
-  const item = useLoaderData().item;
+  const { item, itemImages } = useLoaderData<typeof loader>();
+  console.log(itemImages);
   console.log(item);
   return (
     <Box h={'100%'}>
@@ -30,15 +35,15 @@ const ItemPage = () => {
       >
         <VStack>
           <Image
-            src={item.itemImage}
-            alt={item.itemName}
+            src={itemImages[0]}
+            alt={item.name}
             borderRadius={'md'}
           />
         </VStack>
         <VStack justifyContent={'space-around'}>
           <Text as={'b'}>{item.itemName}</Text>
           <HStack>
-            {Array.from({ length: item.itemRating }).map((_, i) => (
+            {Array.from({ length: 4 }).map((_, i) => (
               <Icon
                 key={i}
                 name='star'
@@ -46,7 +51,7 @@ const ItemPage = () => {
                 as={FaStar}
               />
             ))}
-            {Array.from({ length: 5 - item.itemRating }).map((_, i) => (
+            {Array.from({ length: 5 - 4 }).map((_, i) => (
               <Icon
                 key={i}
                 name='star'
@@ -55,7 +60,7 @@ const ItemPage = () => {
               />
             ))}
           </HStack>
-          <Text as={'b'}>{'$' + item.itemPrice}</Text>
+          <Text as={'b'}>{'$' + item.price}</Text>
           <HStack>
             <Button>Add to Cart</Button>
             <Button>Buy Now</Button>

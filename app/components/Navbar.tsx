@@ -16,7 +16,7 @@ import { MdDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 // testing
 
 const Navbar = () => {
-  const {colorMode, toggleColorMode} = useColorMode();
+  const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box
       as='nav'

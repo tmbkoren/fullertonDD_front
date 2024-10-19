@@ -1,7 +1,15 @@
 import { Grid } from '@chakra-ui/react';
 import ItemDisplay from './ItemDisplay';
+import { Product } from '~/util/types';
 
-const ItemDisplayGrid = ({ itemsToDisplay }) => {
+interface ItemDisplayGridProps {
+  itemsToDisplay: Product[];
+  images: string[][];
+}
+
+const ItemDisplayGrid: React.FC<ItemDisplayGridProps> = ({
+  itemsToDisplay,
+}) => {
   return (
     <Grid
       templateColumns={{
@@ -18,12 +26,8 @@ const ItemDisplayGrid = ({ itemsToDisplay }) => {
     >
       {itemsToDisplay.map((item) => (
         <ItemDisplay
-          key={item.itemId}
-          itemId={item.itemId}
-          itemName={item.itemName}
-          itemPrice={item.itemPrice}
-          itemRating={item.itemRating}
-          itemImage={item.itemImage}
+          key={item.id}
+          item={item}
         />
       ))}
     </Grid>
