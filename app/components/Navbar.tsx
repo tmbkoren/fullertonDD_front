@@ -11,12 +11,15 @@ import {
   IconButton,
 } from '@chakra-ui/react';
 import { Link } from '@remix-run/react';
+import { useContext } from 'react';
 import { FaDoorOpen, FaShoppingCart } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineWbSunny } from 'react-icons/md';
+import UserContext from '~/util/userContext';
 // testing
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const {cart} = useContext(UserContext);
   return (
     <Box
       as='nav'
@@ -75,7 +78,7 @@ const Navbar = () => {
                 name='cart'
                 as={FaShoppingCart}
               />
-              {'Cart'}
+              {cart.length > 0 ? `Cart (${cart.length})` : 'Cart'}
             </Link>
           </ListItem>
           <ListItem ml={3}>

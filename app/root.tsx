@@ -1,5 +1,6 @@
 // root.tsx
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import UserContext from './util/userContext';
 import { withEmotionCache } from '@emotion/react';
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import {
@@ -15,6 +16,7 @@ import { MetaFunction, LinksFunction } from '@remix-run/node'; // Depends on the
 import { ServerStyleContext, ClientStyleContext } from './context';
 import theme from './util/theme';
 import Navbar from './components/Navbar';
+import { Product } from './util/types';
 
 export const meta: MetaFunction = () => {
   return [
@@ -85,19 +87,36 @@ const Document = withEmotionCache(
 );
 
 export default function App() {
+  const [cart, setCart] = useState<Product[]>([]);
+
+  const addItemToCart = (item: Product) => {
+    setCart([...cart, item]);
+    console.log('cart:', cart);
+  }
+
+  const removeItemFromCart = (item: Product) => {
+    setCart(cart.filter((cartItem) => cartItem !== item));
+  }
+
+  const clearCart = () => {
+    setCart([]);
+  }
+
   return (
     <Document>
       <ChakraProvider theme={theme}>
-        <Navbar />
-        <Box
-          p={3}
-          pb={100}
-          as='main'
-          minH={'100%'}
-          width={'95%'}
-        >
-          <Outlet />
-        </Box>
+        <UserContext.Provider value={{ user: null, cart, addItemToCart, removeItemFromCart, clearCart }}>
+          <Navbar />
+          <Box
+            p={3}
+            pb={100}
+            as='main'
+            minH={'100%'}
+            width={'95%'}
+          >
+            <Outlet />
+          </Box>
+        </UserContext.Provider>
       </ChakraProvider>
     </Document>
   );
