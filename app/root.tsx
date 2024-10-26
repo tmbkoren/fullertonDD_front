@@ -74,12 +74,12 @@ const Document = withEmotionCache(
               dangerouslySetInnerHTML={{ __html: css }}
             />
           ))}
+          
         </head>
         <body>
           {children}
           <ScrollRestoration />
           <Scripts />
-          <LiveReload />
         </body>
       </html>
     );
