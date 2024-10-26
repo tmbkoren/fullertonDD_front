@@ -7,11 +7,12 @@
   - [Project Description](#project-description)
   - [Installation Instructions](#installation-instructions)
       - [Git clone the repo to your machine :](#git-clone-the-repo-to-your-machine-)
-      - [After cloning the repo to your machine, run:](#after-cloning-the-repo-to-your-machine-run)
+      - [After cloning the repo to your machine, run to install dependencies:](#after-cloning-the-repo-to-your-machine-run-to-install-dependencies)
       - [Create a .env file](#create-a-env-file)
       - [Run the dev server:](#run-the-dev-server)
       - [Important](#important)
       - [Docs](#docs)
+  - [TO-DO:](#to-do)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -59,3 +60,11 @@ Do not touch context.tsx, entry.client\entry.server.tsx, createEmotionCache.ts, 
 
 - 📖 [Remix docs](https://remix.run/docs)
 - [Chakra UI docs](https://v2.chakra-ui.com/docs/components)
+
+
+## TO-DO:
+
+- Fix styling for light/dark theme
+- Create an "About" page
+- Create a "Contact" page
+- Work on the "Cart" page
