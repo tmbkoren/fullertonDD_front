@@ -1,3 +1,20 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [Front End for FullertonDD project for CPSC 362](#front-end-for-fullertondd-project-for-cpsc-362)
+    - [An e-commerce web app](#an-e-commerce-web-app)
+  - [Project Description](#project-description)
+  - [Installation Instructions](#installation-instructions)
+      - [Git clone the repo to your machine :](#git-clone-the-repo-to-your-machine-)
+      - [After cloning the repo to your machine, run:](#after-cloning-the-repo-to-your-machine-run)
+      - [Create a .env file](#create-a-env-file)
+      - [Run the dev server:](#run-the-dev-server)
+      - [Important](#important)
+      - [Docs](#docs)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Front End for FullertonDD project for CPSC 362
 
 ### An e-commerce web app
