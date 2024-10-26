@@ -35,7 +35,7 @@ The main features of the project:
 git clone https://github.com/tmbkoren/fullertonDD_front.git
 ```
 
-#### After cloning the repo to your machine, run:
+#### After cloning the repo to your machine, run to install dependencies:
 
 ```shellscript
 npm i
