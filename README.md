@@ -31,7 +31,9 @@ The main features of the project:
 ## Installation Instructions
 
 #### Git clone the repo to your machine :
-`git clone https://github.com/tmbkoren/fullertonDD_front.git`
+```shellscript
+git clone https://github.com/tmbkoren/fullertonDD_front.git
+```
 
 #### After cloning the repo to your machine, run:
 
