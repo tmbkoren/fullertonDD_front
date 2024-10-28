@@ -1,16 +1,14 @@
-import { Box, Grid } from '@chakra-ui/react';
+import { Grid } from '@chakra-ui/react';
 import ItemDisplay from './ItemDisplay';
 import { Product } from '~/util/types';
 
 interface ItemDisplayGridProps {
   itemsToDisplay: Product[];
-  images: string[][];
 }
 
 const ItemDisplayGrid: React.FC<ItemDisplayGridProps> = ({
   itemsToDisplay,
 }) => {
-  console.log('itemsToDisplay', itemsToDisplay);
   return (
     <Grid
       templateColumns={{
@@ -25,7 +23,7 @@ const ItemDisplayGrid: React.FC<ItemDisplayGridProps> = ({
       }}
       gap={7}
     >
-      {itemsToDisplay.map((item) => (
+      {itemsToDisplay?.map((item) => (
         <ItemDisplay
           key={item.id}
           item={item}

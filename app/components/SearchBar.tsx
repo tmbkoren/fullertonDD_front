@@ -13,11 +13,10 @@ const SearchBar = () => {
   const navigate = useNavigate();
 
   const handleSearch = () => {
-
     navigate(`/search?name=${search}`);
   };
 
-  const handleKeyPress = (event) => {
+  const handleKeyPress = (event: { key: string; }) => {
     if (event.key === 'Enter') {
       handleSearch();
     }

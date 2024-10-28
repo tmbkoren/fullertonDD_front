@@ -12,23 +12,21 @@ export const meta: MetaFunction = () => {
 };
 
 export async function loader() {
+  // fetching all products from the backend
   const data = await fetch(
     process.env.BACKEND_DEV_URL + '/api/products/getAll'
   );
+  // parsing the response and returning it as an array of products
   const items = (await data.json()) as Product[];
-  const images = items.map((item) => {
-    return item.image_url.map((url) => {
-      return process.env.BACKEND_DEV_URL + url;
-    })
-  })
-  return {items, images};
+  return { items };
 }
 
 export default function Index() {
-  const {items, images} = useLoaderData<typeof loader>();
+  // using the loader data to display the items
+  const { items } = useLoaderData<typeof loader>();
   return (
     <Box>
-      <ItemDisplayGrid itemsToDisplay={items} images={images}/>
+      <ItemDisplayGrid itemsToDisplay={items} />
     </Box>
   );
 }

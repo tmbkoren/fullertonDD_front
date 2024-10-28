@@ -18,9 +18,9 @@ export async function loader({ request }: LoaderFunctionArgs) {
   if (data.status === 200) {
     const items = (await data.json()) as Product[];
 
-    return { items };
+    return { items, message: '' };
   } else {
-    return { message: `No items found on the search request: ${nameQuery}` };
+    return { items: [], message: `No items found on the search request: ${nameQuery}` };
   }
 }
 
@@ -31,7 +31,7 @@ const SearchPage = () => {
 
   return (
     <Box>
-      {items ? (
+      {items.length > 0 ? (
         <ItemDisplayGrid itemsToDisplay={items} />
       ) : (
         <Box>{message}</Box>

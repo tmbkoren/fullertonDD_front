@@ -1,7 +1,6 @@
 import {
   Box,
   HStack,
-  Input,
   List,
   ListItem,
   Image,
@@ -16,7 +15,6 @@ import { FaDoorOpen, FaShoppingCart } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 import UserContext from '~/util/userContext';
 import SearchBar from './SearchBar';
-// testing
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
