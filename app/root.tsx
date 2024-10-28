@@ -102,6 +102,18 @@ export default function App() {
     setCart([]);
   }
 
+  // gets called on first render
+  useEffect(() => {
+    const cart = localStorage.getItem('cart');
+    if (cart) {
+      setCart(JSON.parse(cart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <Document>
       <ChakraProvider theme={theme}>

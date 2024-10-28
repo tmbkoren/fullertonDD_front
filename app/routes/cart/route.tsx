@@ -4,7 +4,6 @@ import UserContext from '~/util/userContext';
 
 const CartPage = () => {
   const { user, cart, clearCart, removeItemFromCart } = useContext(UserContext);
-  console.log('cart page', user, cart);
   return (
     <Box>
       {cart.length === 0 ? (
