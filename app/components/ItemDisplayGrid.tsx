@@ -1,4 +1,4 @@
-import { Grid } from '@chakra-ui/react';
+import { Box, Grid } from '@chakra-ui/react';
 import ItemDisplay from './ItemDisplay';
 import { Product } from '~/util/types';
 
@@ -10,6 +10,7 @@ interface ItemDisplayGridProps {
 const ItemDisplayGrid: React.FC<ItemDisplayGridProps> = ({
   itemsToDisplay,
 }) => {
+  console.log('itemsToDisplay', itemsToDisplay);
   return (
     <Grid
       templateColumns={{

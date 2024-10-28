@@ -91,7 +91,6 @@ export default function App() {
 
   const addItemToCart = (item: Product) => {
     setCart([...cart, item]);
-    console.log('cart:', cart);
   }
 
   const removeItemFromCart = (item: Product) => {

@@ -15,6 +15,7 @@ import { useContext } from 'react';
 import { FaDoorOpen, FaShoppingCart } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 import UserContext from '~/util/userContext';
+import SearchBar from './SearchBar';
 // testing
 
 const Navbar = () => {
@@ -53,11 +54,7 @@ const Navbar = () => {
           </ListItem>
 
           <ListItem>
-            <Input
-              type='search'
-              placeholder='Search'
-              borderRadius={'full'}
-            />
+            <SearchBar  />
           </ListItem>
 
           <ListItem>
