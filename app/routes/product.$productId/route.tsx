@@ -18,7 +18,7 @@ export const loader = async ({ params }: LoaderFunctionArgs) => {
   );
   const item = await data.json();
   const itemImages = item.image_url.map((url: string) => {
-    return process.env.BACKEND_DEV_URL + url;
+    return url;
   });
   return item ? { item, itemImages } : null;
 };

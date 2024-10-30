@@ -32,7 +32,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
               to={`/product/${item.id}`}
             >
               <Image
-                src={'http://localhost:3000' + item.image_url[0]}
+                src={item.image_url[0]}
                 alt={item.name}
                 borderRadius={'md'}
               />
