@@ -15,6 +15,9 @@ import { FaDoorOpen, FaShoppingCart } from 'react-icons/fa';
 import { MdDarkMode, MdOutlineWbSunny } from 'react-icons/md';
 import UserContext from '~/util/userContext';
 import SearchBar from './SearchBar';
+import theme from '~/util/theme';
+
+
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -24,6 +27,8 @@ const Navbar = () => {
       as='nav'
       p={5}
       borderBottom={'1px solid'}
+      bg={theme.colors.navbar.dark}
+      color="white"    // Make the text color white for contrast
     >
       <List>
         <HStack justifyContent={'space-around'}>
@@ -32,11 +37,23 @@ const Navbar = () => {
               as={Link}
               to='/'
             >
-              <Image
-                src='/img/logo.svg'
-                alt='logo'
-                maxH={50}
-              />
+             <Box
+                width="60px" // Adjust the size as needed
+                height="60px" // Same as width for a circle
+                borderRadius="50%"
+                bg="white" // Background color for the circle
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                overflow="hidden" // To clip the logo if needed
+                mr={3} // Margin for spacing
+              >
+                <Image
+                  src='/img/logo.svg'
+                  alt='logo'
+                  maxH="50px" // Make sure the logo fits within the circle
+                />
+              </Box>
             </ChakraLink>
           </ListItem>
           <ListItem>
