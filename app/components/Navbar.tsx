@@ -67,9 +67,17 @@ const Navbar = () => {
           </ListItem>
 
           <ListItem>
-            <Link to="/login">
-              <Icon mr={2} name="login" as={FaDoorOpen} />
-              {"Login"}
+            <Link to='/addItem'>Add Item</Link>
+          </ListItem>
+
+          <ListItem>
+            <Link to='/login'>
+              <Icon
+                mr={2}
+                name='login'
+                as={FaDoorOpen}
+              />
+              {'Login'}
             </Link>
           </ListItem>
 

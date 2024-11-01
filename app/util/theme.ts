@@ -64,10 +64,9 @@ const theme = extendTheme({
   styles: {
     global: (props) => ({
       body: {
-        bgGradient: "linear(to-r, #FF5733, #FFBD33)", //background color , behind card components
-        //bg: "white",
+        bgGradient: "linear(360deg, #0335AD, #0575E6, #205E9B)",
         color: "gray.800",
-        minHeight: "100vh",
+        minHeight: "100vh", // Ensure the gradient covers the full viewport height
       },
     }),
   },
@@ -75,7 +74,7 @@ const theme = extendTheme({
     Card: {
       baseStyle: {
         container: {
-          bgGradient: "linear(225deg, #FD6F01, #FFB000)",
+          bgGradient: "linear(225deg, #FD6F01, #FF9000)",
           color: "white",
         },
       },
