@@ -56,6 +56,10 @@ const Navbar = () => {
           </ListItem>
 
           <ListItem>
+            <Link to='/addItem'>Add Item</Link>
+          </ListItem>
+
+          <ListItem>
             <Link to='/login'>
               <Icon
                 mr={2}
