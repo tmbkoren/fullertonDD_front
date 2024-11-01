@@ -15,6 +15,7 @@ export async function loader() {
   const data = await fetch(
     process.env.BACKEND_DEV_URL + '/api/products/getAll'
   );
+  console.log(data)
   const items = (await data.json()) as Product[];
   const images = items.map((item) => {
     return item.image_url.map((url) => {
