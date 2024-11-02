@@ -1,7 +1,6 @@
 import {
   Box,
   HStack,
-  Input,
   List,
   ListItem,
   Image,
@@ -13,13 +12,17 @@ import {
 import { Link } from "@remix-run/react";
 import { FaDoorOpen, FaShoppingCart } from "react-icons/fa";
 import { MdDarkMode, MdOutlineWbSunny } from "react-icons/md";
+import SearchBar from "./SearchBar";
+import { useContext } from "react";
+import UserContext from "~/util/userContext";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { cart } = useContext(UserContext);
   return (
     <Box
       as="nav"
-      p={5}
+      p={1}
       borderBottom={`1px solid`}
       borderBottomColor={colorMode === "light" ? "gray.200" : "whiteAlpha.300"}
       bgGradient={
@@ -36,7 +39,7 @@ const Navbar = () => {
         <HStack justifyContent={"space-around"}>
           <ListItem>
             <ChakraLink as={Link} to="/">
-              <Image src="/img/logo.svg" alt="logo" maxH={50} />
+              <Image src="/img/logo.svg" alt="logo" maxH={70} />
             </ChakraLink>
           </ListItem>
           <ListItem>
@@ -52,18 +55,7 @@ const Navbar = () => {
           </ListItem>
 
           <ListItem>
-            <Input
-              type="search"
-              placeholder="Search"
-              borderRadius={"full"}
-              focusBorderColor={colorMode === "light" ? "blue.500" : "blue.300"} // color when focused
-              borderColor={
-                colorMode === "light" ? "gray.500" : "whiteAlpha.700"
-              } // default border color
-              _placeholder={{
-                color: colorMode === "light" ? "gray.600" : "whiteAlpha.900",
-              }}
-            />
+            <SearchBar />
           </ListItem>
 
           <ListItem>
@@ -84,7 +76,7 @@ const Navbar = () => {
           <ListItem>
             <Link to="/cart">
               <Icon mr={2} name="cart" as={FaShoppingCart} />
-              {"Cart"}
+              {`Cart (${cart.length})`}
             </Link>
           </ListItem>
           <ListItem ml={3}>

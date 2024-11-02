@@ -1,91 +1,138 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
 
 <svg
-   width="100mm"
-   height="100mm"
-   viewBox="0 0 100 99.999995"
+   fill="#000000"
    version="1.1"
-   id="svg1"
-   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
-   sodipodi:docname="drawing.svg"
+   id="Capa_1"
+   width="800px"
+   height="800px"
+   viewBox="0 0 73.935 73.935"
+   xml:space="preserve"
+   sodipodi:docname="logo_day.svg"
+   inkscape:version="1.4 (e7c3feb100, 2024-10-09)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#111111"
-     borderopacity="1"
-     inkscape:showpageshadow="0"
-     inkscape:pageopacity="0"
-     inkscape:pagecheckerboard="1"
-     inkscape:deskcolor="#d1d1d1"
-     inkscape:document-units="mm"
-     inkscape:zoom="1.3078598"
-     inkscape:cx="235.11694"
-     inkscape:cy="155.98002"
-     inkscape:window-width="1920"
-     inkscape:window-height="1012"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs1">
-    <rect
-       x="36.647419"
-       y="159.56412"
-       width="273.47576"
-       height="199.81654"
-       id="rect2" />
-    <rect
-       x="15.163728"
-       y="34.135562"
-       width="353.02784"
-       height="121.044"
-       id="rect1" />
-  </defs>
-  <g
-     inkscape:label="Layer 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';fill:#000000;stroke-width:0.271404"
-       x="11.968618"
-       y="89.223885"
-       id="text3"
-       transform="scale(1.1147536,0.89705923)"><tspan
-         sodipodi:role="line"
-         id="tspan3"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans Bold';stroke-width:0.271404"
-         x="11.968618"
-         y="89.223885">Depot</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans';fill:#000000;stroke-width:0.271404"
-       x="11.883564"
-       y="69.063904"
-       id="text3-1"
-       transform="scale(1.1147536,0.89705923)"><tspan
-         sodipodi:role="line"
-         id="tspan3-2"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.8835px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans Bold';stroke-width:0.271404"
-         x="11.883564"
-         y="69.063904">Deal</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.8703px;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman';fill:#000000;stroke-width:0.214436"
-       x="6.568481"
-       y="27.821198"
-       id="text3-1-3"
-       transform="scale(0.76990639,1.2988592)"><tspan
-         sodipodi:role="line"
-         id="tspan3-2-6"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.8703px;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman';stroke-width:0.214436"
-         x="6.568481"
-         y="27.821198">FULLERTON</tspan></text>
-  </g>
-</svg>
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs2"><linearGradient
+     id="linearGradient32"
+     inkscape:collect="always"><stop
+       style="stop-color:#ffffff;stop-opacity:1;"
+       offset="0"
+       id="stop32" /><stop
+       style="stop-color:#ffffff;stop-opacity:0;"
+       offset="1"
+       id="stop33" /></linearGradient><linearGradient
+     id="swatch12"
+     inkscape:swatch="solid"><stop
+       style="stop-color:#000000;stop-opacity:0;"
+       offset="0"
+       id="stop12" /></linearGradient><linearGradient
+     id="linearGradient7"
+     inkscape:collect="always"><stop
+       style="stop-color:#eb8332;stop-opacity:1;"
+       offset="0"
+       id="stop7" /><stop
+       style="stop-color:#ffffff;stop-opacity:1;"
+       offset="1"
+       id="stop8" /></linearGradient><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient7"
+     id="linearGradient8"
+     x1="581.32007"
+     y1="86.807251"
+     x2="219.67621"
+     y2="713.19275"
+     gradientUnits="userSpaceOnUse" /><linearGradient
+     inkscape:collect="always"
+     xlink:href="#swatch12"
+     id="linearGradient12"
+     x1="7.366096"
+     y1="18.796422"
+     x2="60.07756"
+     y2="18.796422"
+     gradientUnits="userSpaceOnUse" /><linearGradient
+     inkscape:collect="always"
+     xlink:href="#linearGradient32"
+     id="linearGradient33"
+     x1="-0.49998543"
+     y1="36.9675"
+     x2="74.434985"
+     y2="36.9675"
+     gradientUnits="userSpaceOnUse" /></defs><sodipodi:namedview
+   id="namedview2"
+   pagecolor="#ffffff"
+   bordercolor="#111111"
+   borderopacity="1"
+   inkscape:showpageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="1"
+   inkscape:deskcolor="#d1d1d1"
+   inkscape:zoom="0.57349758"
+   inkscape:cx="271.14325"
+   inkscape:cy="340.89071"
+   inkscape:window-width="1239"
+   inkscape:window-height="1080"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Capa_1"
+   showguides="false" />
+<g
+   id="g2"
+   style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:2.31046875;stroke-dasharray:none;paint-order:markers fill stroke">
+	<g
+   id="g1"
+   style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:2.31046875;stroke-dasharray:none;paint-order:markers fill stroke">
+		<path
+   d="M52.279,73.935H21.656L0,52.279V21.655L21.655,0h30.625l21.655,21.655v30.625L52.279,73.935z M22.898,70.935h28.139    l19.898-19.897v-28.14L51.037,2.999H22.898L3,22.897v28.14L22.898,70.935z"
+   id="path1"
+   style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1;stroke-width:2.31046875;stroke-dasharray:none;paint-order:markers fill stroke" />
+	</g>
+</g>
+<path
+   style="fill:url(#linearGradient8);fill-opacity:1;stroke:none;stroke-width:0;stroke-opacity:1;stroke-dasharray:none;paint-order:markers stroke fill"
+   d="M 144.70559,656.28717 38.854296,550.43238 V 400 249.56762 L 144.70559,143.71283 250.55689,37.858032 h 149.4431 149.4431 L 655.79253,144.21095 762.14197,250.56388 v 149.43961 149.4396 L 655.78905,655.79253 549.43612,762.14197 H 399.99651 250.55689 Z"
+   id="path3"
+   transform="scale(0.09241875)" /><text
+   xml:space="preserve"
+   style="font-size:17.2515px;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;text-anchor:start;fill:#ebbd76;fill-opacity:1;stroke:#ffffff;stroke-width:2.40289;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+   x="4.3796635"
+   y="34.238186"
+   id="text8"><tspan
+     sodipodi:role="line"
+     id="tspan8"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.2515px;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;fill:#1a1a1a;stroke:#ffffff;stroke-width:2.40289;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     x="4.3796635"
+     y="34.238186"
+     dx="0 -1.2 -1.2 -1.2 -1.2 -1.2 -0.14 -1.2 -1.2"
+     rotate="0 0 0 0 0"
+     dy="0 0 0 0 0 0">Fullerton</tspan></text><text
+   xml:space="preserve"
+   style="font-size:17.2515px;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;text-anchor:start;fill:#ebbd76;fill-opacity:1;stroke:#ffffff;stroke-width:2.40289;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+   x="14.168898"
+   y="46.307152"
+   id="text8-5"><tspan
+     sodipodi:role="line"
+     id="tspan8-6"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.2515px;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;fill:#1a1a1a;stroke:#ffffff;stroke-width:2.40289;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     x="14.168898"
+     y="46.307152"
+     dx="0 -1.2 -1.2 -1.2"
+     dy="0 -1"><tspan
+   style="font-size:17.2515px;fill:#1a1a35;fill-opacity:1;stroke-width:2.40289;stroke-dasharray:none"
+   id="tspan12">D</tspan>eal</tspan></text><text
+   xml:space="preserve"
+   style="font-size:17.2515px;font-family:'URW Bookman';-inkscape-font-specification:'URW Bookman';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;text-anchor:start;fill:#ebbd76;fill-opacity:1;stroke:#ffffff;stroke-width:2.40289;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+   x="19.659184"
+   y="58.078197"
+   id="text8-5-9"><tspan
+     sodipodi:role="line"
+     id="tspan8-6-4"
+     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.2515px;font-family:Cantarell;-inkscape-font-specification:'Cantarell Bold';letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;direction:ltr;text-orientation:sideways;fill:#1a1a1a;stroke:#ffffff;stroke-width:2.40289;stroke-linecap:square;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1;paint-order:markers stroke fill"
+     x="19.659184"
+     y="58.078197"
+     dx="0 -1.2 -1.2 -1.2 -1.2"
+     dy="0 -1">Depot</tspan></text></svg>

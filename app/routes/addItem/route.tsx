@@ -1,6 +1,6 @@
 import { Button, Input, VStack } from '@chakra-ui/react';
 import { json, ActionFunctionArgs } from '@remix-run/node';
-import { Form } from '@remix-run/react';
+import { Form, redirect } from '@remix-run/react';
 // import { useDropzone } from 'react-dropzone';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
@@ -26,7 +26,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     }
 
     const result = await response.json();
-    return json(result);
+    return redirect('/');
   } catch (error) {
     console.error('Fetch failed:', error);
     return json({ error: 'Failed to process the request' }, { status: 500 });

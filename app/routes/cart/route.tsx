@@ -25,7 +25,7 @@ const CartPage = () => {
                 <Image
                   height={200}
                   width={200}
-                  src={'http://localhost:3000' + item.image_url[0]}
+                  src={item.image_url[0]}
                   alt={item.name}
                 />
                 <Text>{item.price}</Text>
