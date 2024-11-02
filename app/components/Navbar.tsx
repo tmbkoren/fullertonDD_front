@@ -1,7 +1,6 @@
 import {
   Box,
   HStack,
-  Input,
   List,
   ListItem,
   Image,
