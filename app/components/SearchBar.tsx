@@ -28,7 +28,7 @@ const SearchBar = () => {
     <InputGroup>
       <Box
         border={`1px solid ${theme.colors.searchbar.border}`} // Light blue border
-        borderRadius="md"
+        borderRadius='50px'
         boxShadow="md" // Add a subtle shadow for depth
       >
         <Input
@@ -38,8 +38,9 @@ const SearchBar = () => {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleKeyPress}
           bg={theme.colors.searchbar.background} // White background for the input
-          color={theme.colors.text.dark} // Use dark text color from the theme
+          color={'black'} // Use dark text color from the theme
           border="none" // Remove border for a cleaner look
+          borderRadius={'50px'}
           paddingRight="40px" // Add padding to the right for the search icon
           _focus={{ 
             border: 'none', 
@@ -53,6 +54,7 @@ const SearchBar = () => {
             icon={<FaSearch />}
             onClick={handleSearch}
             variant="solid" // Change to solid for a more prominent look
+            borderRadius={'50%'}
             bg={theme.colors.brand[500]} // Primary brand color for the button
             color="white" // White color for the search icon
             _hover={{ bg: theme.colors.brand[400] }} // Slightly lighter on hover

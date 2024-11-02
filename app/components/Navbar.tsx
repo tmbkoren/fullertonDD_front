@@ -13,6 +13,7 @@ import {
 import { Link } from "@remix-run/react";
 import { FaDoorOpen, FaShoppingCart } from "react-icons/fa";
 import { MdDarkMode, MdOutlineWbSunny } from "react-icons/md";
+import SearchBar from "./SearchBar";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -52,18 +53,7 @@ const Navbar = () => {
           </ListItem>
 
           <ListItem>
-            <Input
-              type="search"
-              placeholder="Search"
-              borderRadius={"full"}
-              focusBorderColor={colorMode === "light" ? "blue.500" : "blue.300"} // color when focused
-              borderColor={
-                colorMode === "light" ? "gray.500" : "whiteAlpha.700"
-              } // default border color
-              _placeholder={{
-                color: colorMode === "light" ? "gray.600" : "whiteAlpha.900",
-              }}
-            />
+            <SearchBar />
           </ListItem>
 
           <ListItem>
