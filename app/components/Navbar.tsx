@@ -13,9 +13,12 @@ import { Link } from "@remix-run/react";
 import { FaDoorOpen, FaShoppingCart } from "react-icons/fa";
 import { MdDarkMode, MdOutlineWbSunny } from "react-icons/md";
 import SearchBar from "./SearchBar";
+import { useContext } from "react";
+import UserContext from "~/util/userContext";
 
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
+  const { cart } = useContext(UserContext);
   return (
     <Box
       as="nav"
@@ -73,7 +76,7 @@ const Navbar = () => {
           <ListItem>
             <Link to="/cart">
               <Icon mr={2} name="cart" as={FaShoppingCart} />
-              {"Cart"}
+              {`Cart (${cart.length})`}
             </Link>
           </ListItem>
           <ListItem ml={3}>
