@@ -22,7 +22,7 @@ const Navbar = () => {
   return (
     <Box
       as="nav"
-      p={5}
+      p={1}
       borderBottom={`1px solid`}
       borderBottomColor={colorMode === "light" ? "gray.200" : "whiteAlpha.300"}
       bgGradient={
@@ -39,7 +39,7 @@ const Navbar = () => {
         <HStack justifyContent={"space-around"}>
           <ListItem>
             <ChakraLink as={Link} to="/">
-              <Image src="/img/logo.svg" alt="logo" maxH={50} />
+              <Image src="/img/logo.svg" alt="logo" maxH={70} />
             </ChakraLink>
           </ListItem>
           <ListItem>
