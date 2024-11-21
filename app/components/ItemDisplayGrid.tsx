@@ -8,7 +8,7 @@ interface ItemDisplayGridProps {
 
 const ItemDisplayGrid: React.FC<ItemDisplayGridProps> = ({
   itemsToDisplay,
-}) => {
+}: ItemDisplayGridProps) => {
   return (
     <Grid
       templateColumns={{

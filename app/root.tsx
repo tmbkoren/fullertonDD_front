@@ -5,7 +5,6 @@ import { withEmotionCache } from '@emotion/react';
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
@@ -60,6 +59,8 @@ const Document = withEmotionCache(
       });
       // reset cache to reapply global styles
       clientStyleData?.reset();
+    // this is copied from the chakra-ui docs so I have to disable this check
+    // eslint-disable-next-line react-hooks/exhaustive-deps 
     }, []);
 
     return (

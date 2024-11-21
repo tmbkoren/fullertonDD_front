@@ -20,7 +20,7 @@ interface ItemDisplayProps {
   item: Product;
 }
 
-const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }) => {
+const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }: ItemDisplayProps) => {
   const { addItemToCart } = useContext(UserContext);
   return (
     <GridItem>

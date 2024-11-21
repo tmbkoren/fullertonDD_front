@@ -25,7 +25,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       return json({ error: 'Failed to upload images' }, { status: 500 });
     }
 
-    const result = await response.json();
+    // const result = await response.json();
     return redirect('/');
   } catch (error) {
     console.error('Fetch failed:', error);
