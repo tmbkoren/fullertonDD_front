@@ -7,7 +7,7 @@ import {
   Button,
   Icon,
 } from '@chakra-ui/react';
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs } from '@vercel/remix';
 import { useLoaderData } from '@remix-run/react';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 

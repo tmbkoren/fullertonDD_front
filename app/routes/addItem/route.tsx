@@ -1,5 +1,5 @@
 import { Button, Input, VStack } from '@chakra-ui/react';
-import { json, ActionFunctionArgs } from '@remix-run/node';
+import { json, ActionFunctionArgs } from '@vercel/remix';
 import { Form, redirect } from '@remix-run/react';
 // import { useDropzone } from 'react-dropzone';
 

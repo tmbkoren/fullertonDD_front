@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import { LoaderFunctionArgs } from '@remix-run/node';
+import { LoaderFunctionArgs } from '@vercel/remix';
 import { useLoaderData } from '@remix-run/react';
 import ItemDisplayGrid from '~/components/ItemDisplayGrid';
 import { Product } from '~/util/types';

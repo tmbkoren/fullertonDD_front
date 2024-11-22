@@ -1,5 +1,5 @@
 import { Box } from '@chakra-ui/react';
-import type { MetaFunction } from '@remix-run/node';
+import type { MetaFunction } from '@vercel/remix';
 import ItemDisplayGrid from '~/components/ItemDisplayGrid';
 import { useLoaderData } from '@remix-run/react';
 import { Product } from '~/util/types';

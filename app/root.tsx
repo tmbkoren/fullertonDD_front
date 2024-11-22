@@ -10,7 +10,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from '@remix-run/react';
-import { MetaFunction, LinksFunction } from '@remix-run/node'; // Depends on the runtime you choose
+import { MetaFunction, LinksFunction } from '@vercel/remix'; // Depends on the runtime you choose
 
 import { ServerStyleContext, ClientStyleContext } from './context';
 import theme from './util/theme';
