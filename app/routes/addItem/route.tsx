@@ -59,31 +59,36 @@ const AddItemPage = () => {
       method='post'
       encType='multipart/form-data'
     >
-      <VStack>
+      <VStack gap={10}>
         <Input
           type='text'
           name='name'
           placeholder='Name'
+          _placeholder={{ color: 'gray.300' }}
         />
         <Input
           type='text'
           name='description'
           placeholder='Description'
+          _placeholder={{ color: 'gray.300' }}
         />
         <Input
           type='float'
           name='price'
           placeholder='Price'
+          _placeholder={{ color: 'gray.300' }}
         />
         <Input
           type='text'
           name='category'
           placeholder='Category'
+          _placeholder={{ color: 'gray.300' }}
         />
         <Input
           type='text'
           name='stock_quantity'
           placeholder='Initial Stock'
+          _placeholder={{ color: 'gray.300' }}
         />
         <Input
           visibility={'hidden'}
