@@ -13,18 +13,26 @@ import { FaRegStar, FaStar } from 'react-icons/fa';
 
 export const loader = async ({ params }: LoaderFunctionArgs) => {
   const productId = params.productId;
-  const data = await fetch(
-    process.env.BACKEND_DEV_URL + '/api/products/getOne/' + productId
-  );
-  const item = await data.json();
-  const itemImages = item.image_url.map((url: string) => {
-    return url;
-  });
-  return item ? { item, itemImages } : null;
+  try {
+    const data = await fetch(
+      process.env.BACKEND_DEV_URL + '/api/products/getOne/' + productId
+    );
+    const item = await data.json();
+    const itemImages = item.image_url.map((url: string) => {
+      return url;
+    });
+    return { item, itemImages };
+  } catch (error) {
+    console.error(error);
+    return { item: null, itemImages: [] };
+  }
 };
 
 const ItemPage = () => {
   const { item, itemImages } = useLoaderData<typeof loader>();
+  if (!item) {
+    return <div>Item not found</div>;
+  }
   console.log(itemImages);
   console.log(item);
   return (

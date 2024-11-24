@@ -62,8 +62,7 @@ const theme = extendTheme({
       },
     },
   styles: {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    global: (props) => ({
+    global: () => ({
       body: {
         bgGradient: "linear(360deg, #0335AD, #0575E6, #205E9B)",
         color: "gray.800",
