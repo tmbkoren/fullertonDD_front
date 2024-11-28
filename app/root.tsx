@@ -9,13 +9,15 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteLoaderData,
 } from '@remix-run/react';
-import { MetaFunction, LinksFunction } from '@vercel/remix'; // Depends on the runtime you choose
+import { MetaFunction, LinksFunction, LoaderFunctionArgs } from '@vercel/remix'; // Depends on the runtime you choose
 
 import { ServerStyleContext, ClientStyleContext } from './context';
 import theme from './util/theme';
 import Navbar from './components/Navbar';
-import { Product } from './util/types';
+import { Product, User } from './util/types';
+import { authenticator } from './services/auth.server';
 
 export const meta: MetaFunction = () => {
   return [
@@ -59,8 +61,8 @@ const Document = withEmotionCache(
       });
       // reset cache to reapply global styles
       clientStyleData?.reset();
-    // this is copied from the chakra-ui docs so I have to disable this check
-    // eslint-disable-next-line react-hooks/exhaustive-deps 
+      // this is copied from the chakra-ui docs so I have to disable this check
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -75,7 +77,6 @@ const Document = withEmotionCache(
               dangerouslySetInnerHTML={{ __html: css }}
             />
           ))}
-          
         </head>
         <body>
           {children}
@@ -87,20 +88,28 @@ const Document = withEmotionCache(
   }
 );
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  const user = await authenticator.isAuthenticated(request);
+  return { user };
+}
+
 export default function App() {
+  const { user } = useRouteLoaderData<typeof loader>('root') || {
+    user: {} as User,
+  };
   const [cart, setCart] = useState<Product[]>([]);
 
   const addItemToCart = (item: Product) => {
     setCart([...cart, item]);
-  }
+  };
 
   const removeItemFromCart = (item: Product) => {
     setCart(cart.filter((cartItem) => cartItem !== item));
-  }
+  };
 
   const clearCart = () => {
     setCart([]);
-  }
+  };
 
   // gets called on first render
   useEffect(() => {
@@ -117,7 +126,9 @@ export default function App() {
   return (
     <Document>
       <ChakraProvider theme={theme}>
-        <UserContext.Provider value={{ user: null, cart, addItemToCart, removeItemFromCart, clearCart }}>
+        <UserContext.Provider
+          value={{ user, cart, addItemToCart, removeItemFromCart, clearCart }}
+        >
           <Navbar />
           <Box
             p={3}

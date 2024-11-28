@@ -1,40 +1,67 @@
+// import { useState } from 'react';
+import {
+  Box,
+  Button,
+  Heading,
+} from '@chakra-ui/react';
+import { Form } from '@remix-run/react';
+import { LoaderFunctionArgs } from '@remix-run/node';
+import { authenticator } from '~/services/auth.server';
 
-import { useState } from "react";
-import { Box, Input, Button, FormControl, FormLabel, Heading, VStack } from "@chakra-ui/react";
+export async function loader({ request }: LoaderFunctionArgs) {
+  return await authenticator.isAuthenticated(request, {
+    successRedirect: '/cart',
+  });
+}
 
 const LoginPage = () => {
-    // State hooks to handle input values
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+  // State hooks to handle input values
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
 
-    const handleLogin = () => {
-        // Check if entered credentials match the expected values
-        if (username === "username" && password === "password") {
-            alert("Login successful!"); // Success prompt
-        } else {
-            alert("Invalid username or password."); // Error prompt
-        }
-    };
+  // const handleLogin = () => {
+  //   // Check if entered credentials match the expected values
+  //   if (username === 'username' && password === 'password') {
+  //     alert('Login successful!'); // Success prompt
+  //   } else {
+  //     alert('Invalid username or password.'); // Error prompt
+  //   }
+  // };
 
-    return (
-        <Box 
-            display="flex" 
-            alignItems="center" 
-            justifyContent="center" 
-            height="100vh" 
-            bg="gray.100"
+  return (
+    <Box
+      display='flex'
+      alignItems='center'
+      justifyContent='center'
+      height='100vh'
+      bg='gray.100'
+    >
+      <Box
+        bg='white'
+        p={6}
+        rounded='md'
+        shadow='md'
+        width='400px'
+      >
+        <Heading
+          mb={6}
+          textAlign='center'
+          color='brand.500'
         >
-            <Box 
-                bg="white" 
-                p={6} 
-                rounded="md" 
-                shadow="md" 
-                width="400px"
-            >
-                <Heading mb={6} textAlign="center" color="brand.500">
-                    Login
-                </Heading>
-                <VStack spacing={4}>
+          Login
+        </Heading>
+        <Form
+          action='/auth/google'
+          method='post'
+        >
+          <Button
+            color={'black'}
+            type='submit'
+          >
+            Login with Google
+          </Button>
+        </Form>
+        {/* <VStack spacing={4}>
                     <FormControl id="username">
                         <FormLabel>Username</FormLabel>
                         <Input 
@@ -71,10 +98,10 @@ const LoginPage = () => {
                     >
                         Login
                     </Button>
-                </VStack>
-            </Box>
-        </Box>
-    );
-}
+                </VStack> */}
+      </Box>
+    </Box>
+  );
+};
 
 export default LoginPage;
