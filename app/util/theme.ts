@@ -1,4 +1,4 @@
-import { extendTheme, ThemeConfig } from "@chakra-ui/react";
+import { extendTheme, ThemeConfig, SystemStyleObject } from "@chakra-ui/react";
 
 // Color mode config
 const config: ThemeConfig = {
@@ -8,6 +8,7 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   config,
+
   colors: {
       // Primary and secondary brand colors (for branding elements like logos, key buttons)
       brand: {
@@ -15,74 +16,71 @@ const theme = extendTheme({
         500: "#007BFF",  // Blue as the primary brand color
         900: "#1a202c",  // Dark navy for contrasts and key highlights
       },
-      
-      // Feedback and status colors (success, warning, error states)
-      feedback: {
-        success: "#28A745", // Green
-        warning: "#FFC107", // Yellow
-        error: "#DC3545",   // Red
-      },
-  
-      // Grayscale (used for borders, backgrounds, and less prominent elements)
-      gray: {
-        100: "#f7fafc",  // Light gray for backgrounds
-        500: "#6C757D",  // Medium gray for text or icons
-        900: "#343A40",  // Dark gray
-      },
-  
-      // Navbar colors for easy access in the Navbar component
-      navbar: {
-        light: "#ADD8E6",  // Light blue for navbar
-        dark: "#003366",   // Dark blue for navbar
-        text: "white",     // Text color for navbar
-      },
-  
-      // Search bar colors
+
       searchbar: {
         background: "#F0F8FF", // Very light blue
         border: "#D1E7FF",     // Light blue border
         text: "#003366",       // Dark text in search bar
       },
-  
-      // Product colors
-      product: {
-        background: "#FFFFFF", // White product background
-        border: "#E0E0E0",     // Light gray border around product
-        hover: "#F9F9F9",      // Subtle hover background
+
+      navbar:{
+        bgGradient: "linear(360deg, #0335AD, #0575E6, #205E9B)",
       },
-  
-      // General background and text colors
-      background: {
-        light: "#FFFFFF",  // General light background (default)
-        dark: "#1A202C",   // Dark background for dark mode
-      },
-      text: {
-        light: "#333333",  // Dark gray text for light backgrounds
-        dark: "#FFFFFF",   // White text for dark backgrounds
+
+      // these colors overide global and are use for the footer located in footer.tsx
+      footer: {
+        bg: "#003366",  // Dark blue background
+        text: "#FFFFFF", // White text
       },
     },
-  styles: {
-    global: () => ({
-      body: {
-        bgGradient: "linear(360deg, #0335AD, #0575E6, #205E9B)",
-        color: "gray.800",
-        minHeight: "100vh", // Ensure the gradient covers the full viewport height
-      },
-    }),
-  },
+
+
+    styles: { 
+      global: (props: { colorMode: 'light' | 'dark' }): SystemStyleObject => ({
+        body: {
+          // Change background gradient based on color mode
+
+          bgGradient: props.colorMode === "dark"
+            ? "linear(360deg, #000000, #434343)"  // Dark mode gradient
+            : "none",  // No gradient in light mode, you can adjust to other styles if needed
+
+          color: {
+            light: "black",  // Text color for light mode
+            dark: "white",   // Text color for dark mode
+          },
+           
+          minHeight: "100vh",
+        },
+      }),
+    },
+
   components: {
     Card: {
       baseStyle: {
         container: {
-          bgGradient: "linear(225deg, #FD6F01, #FF9000)",
-          color: "white",
+          bgGradient: {
+            light: "linear(225deg, #FD6F01, #FF9000)",  // Gradient for light mode
+            dark: "linear(225deg, #2D3748, #4A5568)",   // Gradient for dark mode (darker tones)
+          },
+          color: {
+            light: "black",  // Text color for light mode
+            dark: "white",   // Text color for dark mode
+          },
         },
       },
     },
     Button: {
-      baseStyle: {
-        _hover: {
-          bg: "blue.100",
+      baseStyle: { 
+      },
+      variants: { // variant added to app/components/ItemDisplay.tsx
+        addToCart: {
+          mt : 2.5,
+          rounded: "xl",
+          bg: "gold", // change the background color for product card button "Add to Cart"
+          _hover: {
+            bg: "yellow.500",
+          },
+          color: "black", // fixed color for test in all modes
         },
       },
     },
