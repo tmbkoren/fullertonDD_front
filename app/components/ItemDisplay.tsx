@@ -9,6 +9,7 @@ import {
   Image,
   Link as ChakraLink,
   VStack,
+  useColorMode,
 } from '@chakra-ui/react';
 import { Link } from '@remix-run/react';
 import { useContext } from 'react';
@@ -22,54 +23,83 @@ interface ItemDisplayProps {
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }: ItemDisplayProps) => {
   const { addItemToCart } = useContext(UserContext);
+  const { colorMode } = useColorMode(); 
+
   return (
     <GridItem>
-      <Card p={3}>
-        <VStack gap={3}>
+      <Card
+        border="1px solid"
+        borderColor={colorMode === 'light' ? 'lightblue' : 'gray.700'} // Darker border in dark mode
+        borderRadius="md"
+        p={3}
+        display="flex"
+        flexDirection="column"
+        height="100%"
+        width="100%"
+        overflow="hidden"
+        boxShadow="xl"
+      >
+        <VStack gap={3} alignItems="stretch">
+          {/* Product Image */}
           <Box>
-            <ChakraLink
-              as={Link}
-              to={`/product/${item.id}`}
-            >
+            <ChakraLink as={Link} to={`/product/${item.id}`}>
               <Image
                 src={item.image_url[0]}
-                alt={item.name}
-                borderRadius={'md'}
+                alt={item.name || 'Product Image'} // Ensure alt text is provided
+                borderRadius="md"
+                width="100%"
               />
             </ChakraLink>
           </Box>
-          <VStack>
-            <HStack justifyContent={'space-between'}>
-              <Text as={'b'}>{item.name}</Text>
-              <Text as={'b'}>{'$' + item.price}</Text>
+
+          {/* Product Name and Price */}
+          <VStack spacing={2} alignItems="stretch">
+            <HStack
+              justifyContent="space-between"
+              alignItems="center"
+              width="100%"
+              flexWrap="nowrap"
+            >
+              <Text
+                as="b"
+                isTruncated
+                maxWidth="120px"
+                overflow="hidden"
+                textOverflow="ellipsis"
+                whiteSpace="nowrap"
+                color={colorMode === 'light' ? 'black' : 'white'} // Adjust text color based on mode
+              >
+                {item.name}
+              </Text>
+              <Text 
+                as="b"
+                color={colorMode === 'light' ? 'black' : 'white'} // Adjust price color based on mode
+              >
+                {`$${item.price}`}
+              </Text>
             </HStack>
-            <HStack>
+
+            {/* Product Rating */}
+            <HStack spacing={1} alignItems="center">
               {Array.from({ length: 4 }).map((_, i) => (
-                <Icon
-                  key={i}
-                  name='star'
-                  color='brand.500'
-                  as={FaStar}
-                />
+                <Icon key={i} as={FaStar} color="gold" />
               ))}
               {Array.from({ length: 5 - 4 }).map((_, i) => (
-                <Icon
-                  key={i}
-                  name='star'
-                  color='gray.300'
-                  as={FaRegStar}
-                />
+                <Icon key={i} as={FaRegStar} color="gold" />
               ))}
             </HStack>
           </VStack>
+
+          {/* Add to Cart Button */}
           <Button
-            mt={3}
-            borderRadius={'full'}
-            onClick={() => addItemToCart(item)}
-          >
+             variant="addToCart"
+             onClick={() => addItemToCart(item)}
+             aria-label={`Add ${item.name} to cart`}
+           >
+
             Add to Cart
           </Button>
-        </VStack>{' '}
+        </VStack>
       </Card>
     </GridItem>
   );

@@ -1,7 +1,6 @@
-import { Button, Input, VStack } from '@chakra-ui/react';
+import { Button, Input, VStack, Box, FormControl, FormLabel, Text, useColorModeValue } from '@chakra-ui/react';
 import { json, ActionFunctionArgs } from '@vercel/remix';
 import { Form, redirect } from '@remix-run/react';
-// import { useDropzone } from 'react-dropzone';
 
 export const action = async ({ request }: ActionFunctionArgs) => {
   try {
@@ -9,14 +8,10 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     console.log('formData: ', formData);
 
     // Use fetch without manually setting headers
-    // `${process.env.BACKEND_DEV_URL}
     const response = await fetch(
       `${process.env.BACKEND_DEV_URL}api/products/upload`,
       {
         method: 'POST',
-        headers: {
-          // "Content-Type": "multipart/form-data", // No need to set this
-        },
         body: formData, // Send formData directly
       }
     );
@@ -25,7 +20,6 @@ export const action = async ({ request }: ActionFunctionArgs) => {
       return json({ error: 'Failed to upload images' }, { status: 500 });
     }
 
-    // const result = await response.json();
     return redirect('/');
   } catch (error) {
     console.error('Fetch failed:', error);
@@ -34,6 +28,11 @@ export const action = async ({ request }: ActionFunctionArgs) => {
 };
 
 const AddItemPage = () => {
+  const bg = useColorModeValue('gray.200', 'gray.800'); // background for light/dark mode
+  const color = useColorModeValue('black', 'white'); // text color for light/dark mode
+  const placeholderColor = useColorModeValue('gray.600', 'gray.300'); // placeholder color
+  const inputBg = useColorModeValue('white', 'gray.700'); // white input for light mode and dark gray for dark mode
+  
   // this commented out code is for drag-and-drop file upload, which I decided to postpone for now, as it will take a while to implement
   // const formData = useActionData<typeof action>();
   // console.log('formData: ', typeof formData);
@@ -54,68 +53,103 @@ const AddItemPage = () => {
   // }, []);
   //   const { getRootProps, getInputProps } = useDropzone({onDrop});
 
+
   return (
-    <Form
-      method='post'
-      encType='multipart/form-data'
-    >
-      <VStack gap={10}>
-        <Input
-          type='text'
-          name='name'
-          placeholder='Name'
-          _placeholder={{ color: 'gray.300' }}
-        />
-        <Input
-          type='text'
-          name='description'
-          placeholder='Description'
-          _placeholder={{ color: 'gray.300' }}
-        />
-        <Input
-          type='float'
-          name='price'
-          placeholder='Price'
-          _placeholder={{ color: 'gray.300' }}
-        />
-        <Input
-          type='text'
-          name='category'
-          placeholder='Category'
-          _placeholder={{ color: 'gray.300' }}
-        />
-        <Input
-          type='text'
-          name='stock_quantity'
-          placeholder='Initial Stock'
-          _placeholder={{ color: 'gray.300' }}
-        />
-        <Input
-          visibility={'hidden'}
-          type='hidden'
-          name='available'
-          value={'TRUE'}
-        />
-        {/* Following commented out code is for drag-and-drop file upload, which I decided to postpone for now, as it will take a while to implement*/}
-        {/* <Input
-          type='hidden'
-          name='files'
-          placeholder='Images'
-          value={files}
-        />
-        <Box {...getRootProps()} border={'1px solid black'} p={10} cursor={'pointer'}>
-          <p>Drag 'n' drop some files here, or click to select files</p>  
-          <input
-            name='images'
-            {...getInputProps()}
-          />
-        </Box> */}
-        <Input
-          type='file'
-          name='images'
-        />
-        <Button type='submit'>Add Item</Button>
-      </VStack>
+    <Form method="post" encType="multipart/form-data">
+      <Box maxW="lg" mx="auto" p={6} bg={bg} color={color} boxShadow="lg" rounded="md" mt={5}>
+        <VStack spacing={3}>
+          <FormControl>
+            <FormLabel htmlFor="name">Product Name</FormLabel>
+            <Input
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Enter product name"
+              bg={inputBg} // Input background color
+              _placeholder={{ color: placeholderColor }}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel htmlFor="description">Description</FormLabel>
+            <Input
+              id="description"
+              name="description"
+              type="text"
+              placeholder="Enter product description"
+              bg={inputBg} // Input background color
+              _placeholder={{ color: placeholderColor }}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel htmlFor="price">Price</FormLabel>
+            <Input
+              id="price"
+              name="price"
+              type="float"
+              placeholder="Enter product price"
+              bg={inputBg} // Input background color
+              _placeholder={{ color: placeholderColor }}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel htmlFor="category">Category</FormLabel>
+            <Input
+              id="category"
+              name="category"
+              type="text"
+              placeholder="Enter product category"
+              bg={inputBg} // Input background color
+              _placeholder={{ color: placeholderColor }}
+            />
+          </FormControl>
+
+          <FormControl>
+            <FormLabel htmlFor="stock_quantity">Initial Stock</FormLabel>
+            <Input
+              id="stock_quantity"
+              name="stock_quantity"
+              type="number"
+              placeholder="Enter initial stock quantity"
+              bg={inputBg} // Input background color
+              _placeholder={{ color: placeholderColor }}
+            />
+          </FormControl>
+
+          <FormControl>
+            <Input
+              visibility="hidden"
+              type="hidden"
+              name="available"
+              value="TRUE"
+            />
+          </FormControl>
+
+          {/* For the file upload */}
+          <FormControl>
+            <FormLabel htmlFor="images">Product Image</FormLabel>
+            <Input
+              id="images"
+              name="images"
+              type="file"
+              accept="image/*"
+            />
+            <Text fontSize="sm" color="gray.500" mt={1}>PNG, JPG, GIF up to 10MB</Text>
+          </FormControl>
+
+          <Button
+            type="submit"
+            colorScheme="blue"
+            width="full"
+            mt={3}
+            isLoading={false} // You can set this to true if submitting
+          >
+            Add Product
+          </Button>
+        </VStack>
+      </Box>
     </Form>
   );
 };

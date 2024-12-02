@@ -30,6 +30,7 @@ const SearchBar = () => {
         border={`1px solid ${theme.colors.searchbar.border}`} // Light blue border
         borderRadius='50px'
         boxShadow="md" // Add a subtle shadow for depth
+        background={theme.colors.searchbar.background} // Ensure the background is properly styled
       >
         <Input
           type='search'
@@ -38,10 +39,11 @@ const SearchBar = () => {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={handleKeyPress}
           bg={theme.colors.searchbar.background} // White background for the input
-          color={'black'} // Use dark text color from the theme
+          color={'black'} // Dark text color for visibility
           border="none" // Remove border for a cleaner look
           borderRadius={'50px'}
           paddingRight="40px" // Add padding to the right for the search icon
+          _placeholder={{ color: theme.colors.searchbar.text || 'gray.500' }} // Placeholder color
           _focus={{ 
             border: 'none', 
             outline: 'none',

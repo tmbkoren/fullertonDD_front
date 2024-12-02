@@ -1,5 +1,5 @@
 // root.tsx
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState , useRef } from 'react';
 import UserContext from './util/userContext';
 import { withEmotionCache } from '@emotion/react';
 import { Box, ChakraProvider } from '@chakra-ui/react';
@@ -15,8 +15,10 @@ import { MetaFunction, LinksFunction, LoaderFunctionArgs } from '@vercel/remix';
 
 import { ServerStyleContext, ClientStyleContext } from './context';
 import theme from './util/theme';
+import ToasterAlert from './components/ToasterAlert';
 import Navbar from './components/Navbar';
 import { Product, User } from './util/types';
+import Footer from './components/Footer';
 import { authenticator } from './services/auth.server';
 
 export const meta: MetaFunction = () => {
@@ -98,17 +100,24 @@ export default function App() {
     user: {} as User,
   };
   const [cart, setCart] = useState<Product[]>([]);
+  type ToasterAlertHandle = {
+    showToast: (message: string, status: 'success' | 'error' | 'info' | 'warning') => void;
+  };
+  const toasterRef = useRef<ToasterAlertHandle>(null);
 
   const addItemToCart = (item: Product) => {
     setCart([...cart, item]);
+    toasterRef.current?.showToast(`${item.name} has been added to your cart!`, "success");
   };
 
   const removeItemFromCart = (item: Product) => {
     setCart(cart.filter((cartItem) => cartItem !== item));
+    toasterRef.current?.showToast(`${item.name} has been removed from your cart!`, "info");
   };
 
   const clearCart = () => {
     setCart([]);
+    toasterRef.current?.showToast("Your cart has been cleared!", "info");
   };
 
   // gets called on first render
@@ -132,13 +141,15 @@ export default function App() {
           <Navbar />
           <Box
             p={3}
-            pb={100}
+            pb={300}
             as='main'
             minH={'100%'}
             width={'95%'}
           >
             <Outlet />
           </Box>
+          <ToasterAlert ref={toasterRef} />
+          <Footer />
         </UserContext.Provider>
       </ChakraProvider>
     </Document>
