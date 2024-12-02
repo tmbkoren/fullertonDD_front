@@ -40,8 +40,8 @@ const theme = extendTheme({
     global: (props: { colorMode: "light" | "dark" }): SystemStyleObject => ({
       body: {
         bgGradient: props.colorMode === "dark"
-          ? "linear(360deg, #000000, #434343)" // Dark mode gradient
-          : "none", // No gradient in light mode
+          ? "linear-gradient(90deg, #0d0d0d, #1f1f1f,)" // Dark mode gradient
+          : "none", 
         color: props.colorMode === "dark" ? "white" : "black", // Text color based on color mode
         minHeight: "100vh",
       },
@@ -80,7 +80,7 @@ const theme = extendTheme({
               bg: "green.700", // Darker teal on hover in dark mode
             },
             color: "white", // White text in dark mode
-            boxShadow: "0 5px 20px 0px rgb(72 187 120 / 43%)", // Add the shadow effect for dark mode
+            boxShadow: "0 1px 8px 0px rgb(72 187 120 / 43%)", // Add the shadow effect for dark mode
           _focus: {
             bg: "green.500", // Dark green background on focus
           },

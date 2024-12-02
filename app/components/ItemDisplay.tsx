@@ -29,7 +29,7 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }: ItemDisplayProps) => 
     <GridItem>
       <Card
         border="1px solid"
-        borderColor={colorMode === 'light' ? 'black' : 'gray.700'} // Darker border in dark mode
+        borderColor={colorMode === 'light' ? 'lightblue' : 'gray.700'} // Darker border in dark mode
         borderRadius="md"
         p={3}
         display="flex"
