@@ -6,9 +6,10 @@ import { Product, User } from './types';
 
 const UserContext = createContext({
   user: {} as User | null,
-  cart: [] as Product[],
+  cart: [] as {Product : Product, quantity: number}[],
   addItemToCart: (item: Product) => {},
   removeItemFromCart: (item: Product) => {},
+  setQuantity: (item: Product, quantity: number) => {},
   clearCart: () => {},
 });
 
