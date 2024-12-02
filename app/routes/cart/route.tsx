@@ -12,13 +12,15 @@ import { FaTrash, FaShoppingCart } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import UserContext from '~/util/userContext';
+import { useNavigate } from 'react-router-dom'; // Import navigate
 
 const CartPage = () => {
-    // getting user and cart and its methods from the context
+  // getting user and cart and its methods from the context
   // user is not used right now, hence the next rule
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { user, cart, clearCart, removeItemFromCart } = useContext(UserContext);
   const { colorMode } = useColorMode(); // Get the current color mode (light or dark)
+  const navigate = useNavigate(); // Initialize navigate
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => {
@@ -189,7 +191,12 @@ const CartPage = () => {
               >
                 Clear Cart
               </Button>
+
+              
               <Button
+                // onClick={() => navigate('/login')} testing works 
+                // onClick={() => navigate('/about')} testing works 
+                onClick={() => navigate('/checkout')} // not working error 
                 width="full"
                 colorScheme="blue"
                 variant="solid"
@@ -197,6 +204,7 @@ const CartPage = () => {
               >
                 Proceed to Checkout
               </Button>
+             
             </Box>
           </HStack>
         )}

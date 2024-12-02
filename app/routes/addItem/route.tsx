@@ -32,6 +32,27 @@ const AddItemPage = () => {
   const color = useColorModeValue('black', 'white'); // text color for light/dark mode
   const placeholderColor = useColorModeValue('gray.600', 'gray.300'); // placeholder color
   const inputBg = useColorModeValue('white', 'gray.700'); // white input for light mode and dark gray for dark mode
+  
+  // this commented out code is for drag-and-drop file upload, which I decided to postpone for now, as it will take a while to implement
+  // const formData = useActionData<typeof action>();
+  // console.log('formData: ', typeof formData);
+
+  // const [files, setFiles] = useState<File[]>([]);
+
+  // useEffect(() => {
+  //   console.log('files: ', files)
+  // }, [files]);
+
+  // const onDrop = useCallback((acceptedFiles) => {
+  //   console.log(acceptedFiles);
+  //   acceptedFiles.forEach((file) => {
+  //     console.log(file);
+  //     console.log(typeof file);
+  //     setFiles(files => [...files, file]);
+  //   });
+  // }, []);
+  //   const { getRootProps, getInputProps } = useDropzone({onDrop});
+
 
   return (
     <Form method="post" encType="multipart/form-data">

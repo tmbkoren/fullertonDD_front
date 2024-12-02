@@ -28,13 +28,16 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }: ItemDisplayProps) => 
   return (
     <GridItem>
       <Card
-        p={2.5}
+        border="1px solid"
+        borderColor={colorMode === 'light' ? 'black' : 'gray.700'} // Darker border in dark mode
+        borderRadius="md"
+        p={3}
         display="flex"
         flexDirection="column"
         height="100%"
         width="100%"
         overflow="hidden"
-        boxShadow="lg"
+        boxShadow="xl"
       >
         <VStack gap={3} alignItems="stretch">
           {/* Product Image */}

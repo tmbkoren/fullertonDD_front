@@ -19,36 +19,21 @@ import UserContext from '~/util/userContext';
 const Navbar = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const { cart, user } = useContext(UserContext);
+
   return (
-    <Box
-      as='nav'
-      p={1}
-      borderBottom={`1px solid`}
-      borderBottomColor={colorMode === 'light' ? 'gray.200' : 'whiteAlpha.300'}
-      bgGradient={
-        colorMode === 'light' ? 'linear(to-b, gray.200, gray.100)' : 'none'
-      }
-      backgroundColor={colorMode === 'light' ? 'none' : 'rgba(0, 0, 0, 0.3)'}
-      backdropFilter={colorMode === 'light' ? 'none' : 'blur(10px)'}
-      color={colorMode === 'light' ? 'black' : 'white'}
-      position='sticky'
-      top='0'
-      zIndex='sticky'
+    <Box 
+      p={2}
+      bg={colorMode === 'dark' ? 'navbar.dark.bg' : 'navbar.light.bg'}
+      color={colorMode === 'dark' ? 'navbar.dark.text' : 'navbar.light.text'}
     >
       <List>
         <HStack justifyContent={'space-around'}>
           <ListItem>
-            <ChakraLink
-              as={Link}
-              to='/'
-            >
-              <Image
-                src='/img/logo.svg'
-                alt='logo'
-                maxH={70}
-              />
+            <ChakraLink as={Link} to='/'>
+              <Image src='/img/logo.svg' alt='logo' maxH={70} />
             </ChakraLink>
           </ListItem>
+          
           <ListItem>
             <Link to='/'>Home</Link>
           </ListItem>
@@ -72,20 +57,12 @@ const Navbar = () => {
           <ListItem>
             {user ? (
               <Link to='/logout'>
-                <Icon
-                  mr={2}
-                  name='logout'
-                  as={FaDoorClosed}
-                />
+                <Icon mr={2} name='logout' as={FaDoorClosed} />
                 Logout
               </Link>
             ) : (
               <Link to='/login'>
-                <Icon
-                  mr={2}
-                  name='login'
-                  as={FaDoorOpen}
-                />
+                <Icon mr={2} name='login' as={FaDoorOpen} />
                 {'Login'}
               </Link>
             )}
@@ -93,20 +70,16 @@ const Navbar = () => {
 
           <ListItem>
             <Link to='/cart'>
-              <Icon
-                mr={2}
-                name='cart'
-                as={FaShoppingCart}
-              />
+              <Icon mr={2} name='cart' as={FaShoppingCart} />
               {`Cart (${cart.length})`}
             </Link>
           </ListItem>
+
           <ListItem ml={3}>
             <IconButton
-              icon={
-                colorMode === 'light' ? <MdDarkMode /> : <MdOutlineWbSunny />
-              }
+              icon={colorMode === 'light' ? <MdDarkMode /> : <MdOutlineWbSunny />}
               bg={'transparent'}
+              color='white' // Make sure the icon is always white
               aria-label='Toggle Dark Mode'
               onClick={toggleColorMode}
             />
