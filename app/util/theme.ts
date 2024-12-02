@@ -75,9 +75,9 @@ const theme = extendTheme({
 
           // Dark mode styles
           _dark: {
-            bg: "green.500", // Teal background for dark mode
+            bg: "green.600", // Teal background for dark mode
             _hover: {
-              bg: "green.600", // Darker teal on hover in dark mode
+              bg: "green.700", // Darker teal on hover in dark mode
             },
             color: "white", // White text in dark mode
             boxShadow: "0 5px 20px 0px rgb(72 187 120 / 43%)", // Add the shadow effect for dark mode
