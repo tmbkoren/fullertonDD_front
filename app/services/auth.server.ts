@@ -32,6 +32,7 @@ const googleStrategy = new GoogleStrategy(
       }),
     });
     const user = await res.json();
+    console.log(res)
     console.log('TARKOV: ', user);
     return user.token;
   }

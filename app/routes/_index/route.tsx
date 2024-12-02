@@ -1,4 +1,3 @@
-import { Box } from '@chakra-ui/react';
 import type { MetaFunction } from '@vercel/remix';
 import ItemDisplayGrid from '~/components/ItemDisplayGrid';
 import { useLoaderData } from '@remix-run/react';
@@ -25,8 +24,6 @@ export default function Index() {
   // using the loader data to display the items
   const { items } = useLoaderData<typeof loader>();
   return (
-    <Box>
       <ItemDisplayGrid itemsToDisplay={items} />
-    </Box>
   );
 }

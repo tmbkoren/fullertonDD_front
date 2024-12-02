@@ -141,7 +141,7 @@ export default function App() {
           <Navbar />
           <Box
             p={3}
-            pb={100}
+            pb={300}
             as='main'
             minH={'100%'}
             width={'95%'}
