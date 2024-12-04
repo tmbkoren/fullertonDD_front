@@ -10,6 +10,7 @@ import {
   Link as ChakraLink,
   VStack,
   useColorMode,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { Link } from '@remix-run/react';
 import { useContext } from 'react';
@@ -23,21 +24,25 @@ interface ItemDisplayProps {
 
 const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }: ItemDisplayProps) => {
   const { addItemToCart } = useContext(UserContext);
-  const { colorMode } = useColorMode(); 
+  const { colorMode } = useColorMode();
+  const shadowColor = useColorModeValue('5px 5px 0 black', '1px 1px 0 gray.600'); // ( light mode , dark mode)
+  const borderColor = useColorModeValue('black', 'gray.700');
 
   return (
     <GridItem>
-      <Card
+      <Box
         border="1px solid"
-        borderColor={colorMode === 'light' ? 'lightblue' : 'gray.700'} // Darker border in dark mode
-        borderRadius="md"
-        p={3}
+        borderColor={borderColor}
+        borderRadius="none"
+        p={2}
         display="flex"
         flexDirection="column"
         height="100%"
         width="100%"
         overflow="hidden"
-        boxShadow="xl"
+        boxShadow={shadowColor} // Shadow based on color mode
+        transition="transform 0.2s, box-shadow 0.2s"
+        _hover={{ transform: 'scale(1.03)', boxShadow: '2xl' }} // Subtle hover effect
       >
         <VStack gap={3} alignItems="stretch">
           {/* Product Image */}
@@ -92,15 +97,14 @@ const ItemDisplay: React.FC<ItemDisplayProps> = ({ item }: ItemDisplayProps) => 
 
           {/* Add to Cart Button */}
           <Button
-             variant="addToCart"
-             onClick={() => addItemToCart(item)}
-             aria-label={`Add ${item.name} to cart`}
-           >
-
+            variant="addToCart"
+            onClick={() => addItemToCart(item)}
+            aria-label={`Add ${item.name} to cart`}
+          >
             Add to Cart
           </Button>
         </VStack>
-      </Card>
+      </Box>
     </GridItem>
   );
 };

@@ -19,7 +19,8 @@ const theme = extendTheme({
       border: "#D1E7FF", // Light blue border
       text: "#003366", // Dark text in search bar
     },
-    
+
+
     navbar: {
       light: {
         bg: "#1a3478", // Darker blue background for light mode
@@ -75,14 +76,14 @@ const theme = extendTheme({
 
           // Dark mode styles
           _dark: {
-            bg: "green.600", // Teal background for dark mode
+            bg: "cyan.700", 
             _hover: {
-              bg: "green.700", // Darker teal on hover in dark mode
+              bg: "cyan.800",
             },
             color: "white", // White text in dark mode
             boxShadow: "0 1px 8px 0px rgb(72 187 120 / 43%)", // Add the shadow effect for dark mode
           _focus: {
-            bg: "green.500", // Dark green background on focus
+            bg: "blue.500", 
           },
           },
         },
