@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Card,
   GridItem,
   HStack,
   Icon,
