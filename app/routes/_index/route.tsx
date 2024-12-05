@@ -2,6 +2,10 @@ import type { MetaFunction } from '@vercel/remix';
 import ItemDisplayGrid from '~/components/ItemDisplayGrid';
 import { useLoaderData } from '@remix-run/react';
 import { Product } from '~/util/types';
+import HeroSection from '~/components/HeroSection';
+import CategoryFeature from '~/components/CategoryFeature';
+
+
 
 export const meta: MetaFunction = () => {
   return [
@@ -10,20 +14,39 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-export async function loader() {
-  // fetching all products from the backend
-  const data = await fetch(
-    process.env.BACKEND_DEV_URL + '/api/products/getAll'
-  );
-  // parsing the response and returning it as an array of products
-  const items = (await data.json()) as Product[];
-  return { items };
+interface LoaderData {
+  items: Product[];
+}
+
+export async function loader(): Promise<LoaderData> {
+  try {
+    const data = await fetch(
+      process.env.BACKEND_DEV_URL + '/api/products/getAll'
+    );
+    if (!data.ok) {
+      throw new Error('Failed to fetch products');
+    }
+    const items = (await data.json()) as Product[];
+    return { items };
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    // Optionally handle error, e.g., returning a fallback empty array or showing an error page
+    return { items: [] };  // Empty array as fallback
+  }
 }
 
 export default function Index() {
-  // using the loader data to display the items
   const { items } = useLoaderData<typeof loader>();
+
   return (
-      <ItemDisplayGrid itemsToDisplay={items} />
+    <>
+      <HeroSection />
+      <CategoryFeature />
+      {items.length > 0 ? (
+        <ItemDisplayGrid itemsToDisplay={items} />
+      ) : (
+        <p>No products available at the moment.</p>
+      )}
+    </>
   );
 }

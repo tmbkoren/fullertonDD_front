@@ -23,7 +23,7 @@ const theme = extendTheme({
 
     navbar: {
       light: {
-        bg: "#1a3478", // Darker blue background for light mode
+        bg: "#14204a", // Darker blue background for light mode
         text: "#FFFFFF", // White text for better contrast on dark background
       },
       dark: {
