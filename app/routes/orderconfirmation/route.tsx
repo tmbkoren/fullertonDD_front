@@ -1,4 +1,5 @@
 import {
+    AspectRatio,
     Box,
     Button,
     Text,
@@ -11,7 +12,6 @@ import {
     StepIcon,
     StepIndicator,
     StepNumber,
-    StepSeparator,
     StepStatus,
     StepTitle,
     Stepper,
@@ -112,7 +112,6 @@ import {
                     <StepTitle>{step.title}</StepTitle>
                     <StepDescription>{step.description}</StepDescription>
                   </Box>
-                  <StepSeparator />
                 </Step>
               ))}
             </Stepper>
@@ -226,6 +225,45 @@ import {
                 Go to My Home Page
               </Button>
             </VStack>
+          </Box>
+  
+          {/* Address and Map */}
+          <Box
+            p={6}
+            shadow="lg"
+            borderRadius="xl"
+            bg={colorMode === "light" ? "white" : "gray.700"}
+          >
+            <Text
+              fontSize="2xl"
+              fontWeight="bold"
+              mb={4}
+              color={colorMode === "light" ? "gray.800" : "white"}
+            >
+              Delivery Location
+            </Text>
+            <Text
+              fontSize="lg"
+              mb={4}
+              color={colorMode === "light" ? "gray.800" : "white"}
+            >
+              California State University, Fullerton (CSUF)
+              <br />
+              800 N State College Blvd, Fullerton, CA 92831
+            </Text>
+            
+            {/* Embed Map */}
+            <AspectRatio ratio={16 / 9}>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3343.771640081489!2d-117.88590771072468!3d33.87031762814777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c299af470bce1b%3A0x416d6a1b61acb74!2sCalifornia%20State%20University%2C%20Fullerton!5e0!3m2!1sen!2sus!4v1609824673145!5m2!1sen!2sus"
+                title="Cal State Fullerton Location"
+                width="100%"
+                height="400"
+                frameBorder="0"
+                style={{ border: 0 }}
+                aria-hidden="false"
+              />
+            </AspectRatio>
           </Box>
         </VStack>
       </Box>

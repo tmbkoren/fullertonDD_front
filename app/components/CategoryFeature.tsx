@@ -16,10 +16,12 @@ const CategoryFeature = () => {
   };
 
   return (
-    <Box mt={12} mb={12} px={4}>
+    <Box mt={12} mb={12} px={4} maxWidth="1500px" mx="auto">
+      {/* Centered title */}
       <Text fontSize="2xl" fontWeight="bold" mb={6} textAlign="center">
         Explore Categories
       </Text>
+      {/* Grid container */}
       <SimpleGrid columns={[2, 2, 3, 4]} spacing={6}>
         {categories.map((category) => (
           <Box
@@ -36,19 +38,18 @@ const CategoryFeature = () => {
             transition="all 0.3s ease-in-out"
             onClick={() => handleCategoryClick(category.name)}
             position="relative"
-            display="flex"
-            flexDirection="column"
-            transform={{ base: 'scale(0.9)', sm: 'scale(1)', md: 'scale(1)' }} // More consistent scaling
           >
+            {/* Category image */}
             <Image
               src={category.image}
               alt={category.name}
-              boxSize="full"
+              width="100%"
+              height="200px"
               objectFit="cover"
-              aspectRatio="16/9"
               transition="transform 0.3s ease-in-out"
               _hover={{ transform: 'scale(1.1)' }}
             />
+            {/* Overlay with category name */}
             <Flex
               direction="column"
               align="center"
@@ -58,7 +59,6 @@ const CategoryFeature = () => {
               position="absolute"
               bottom="0"
               width="100%"
-              borderRadius="md"
             >
               <Text fontSize="lg" fontWeight="bold" color="white" textAlign="center">
                 {category.name}

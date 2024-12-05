@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Image, Text, Button } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Link } from "react-router-dom";
 
 interface Slide {
   image: string;
@@ -19,14 +18,25 @@ const SlideData: Slide[] = [
     link: "/deals",
   },
   {
-    image: "https://i.ibb.co/BwZcKpt/Designer-48.jpg",
-    title: "Exclusive Designer Collections",
-    description: "Explore our exclusive collection of designer pieces.",
+    image: "https://i.ibb.co/X5pdBgn/Designer-54.jpg",
+    title: "Exclusive Merch for CSUF Students",
+    description: "",
     link: "/designer-collections",
   },
 ];
 
 const HeroSection: React.FC = () => {
+  // Scroll to ItemDisplayGrid section
+  const scrollToItemDisplay = () => {
+    const itemDisplaySection = document.getElementById("item-display-grid");
+    if (itemDisplaySection) {
+      itemDisplaySection.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
+
   return (
     <Box
       w="100%"
@@ -86,8 +96,6 @@ const HeroSection: React.FC = () => {
                 {slide.description}
               </Text>
               <Button
-                as={Link}
-                to={slide.link}
                 colorScheme="teal"
                 size="lg"
                 width="100%"
@@ -97,6 +105,7 @@ const HeroSection: React.FC = () => {
                   transform: "scale(1.05)",
                 }}
                 transition="transform 0.2s ease-in-out"
+                onClick={scrollToItemDisplay} // Scroll on button click
               >
                 Shop Now
               </Button>

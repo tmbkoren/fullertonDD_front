@@ -5,8 +5,6 @@ import { Product } from '~/util/types';
 import HeroSection from '~/components/HeroSection';
 import CategoryFeature from '~/components/CategoryFeature';
 
-
-
 export const meta: MetaFunction = () => {
   return [
     { title: 'Fullerton Deal Depot' },
@@ -30,7 +28,6 @@ export async function loader(): Promise<LoaderData> {
     return { items };
   } catch (error) {
     console.error('Error fetching products:', error);
-    // Optionally handle error, e.g., returning a fallback empty array or showing an error page
     return { items: [] };  // Empty array as fallback
   }
 }
@@ -42,11 +39,13 @@ export default function Index() {
     <>
       <HeroSection />
       <CategoryFeature />
-      {items.length > 0 ? (
-        <ItemDisplayGrid itemsToDisplay={items} />
-      ) : (
-        <p>No products available at the moment.</p>
-      )}
+      <div id="item-display-grid">
+        {items.length > 0 ? (
+          <ItemDisplayGrid itemsToDisplay={items} />
+        ) : (
+          <p>No products available at the moment.</p>
+        )}
+      </div>
     </>
   );
 }
