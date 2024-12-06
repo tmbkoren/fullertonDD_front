@@ -1,5 +1,5 @@
 // root.tsx
-import React, { useContext, useEffect, useState , useRef } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import UserContext from './util/userContext';
 import { withEmotionCache } from '@emotion/react';
 import { Box, ChakraProvider } from '@chakra-ui/react';
@@ -99,25 +99,102 @@ export default function App() {
   const { user } = useRouteLoaderData<typeof loader>('root') || {
     user: {} as User,
   };
-  const [cart, setCart] = useState<Product[]>([]);
+  const [cart, setCart] = useState<{ Product: Product; quantity: number }[]>(
+    []
+  );
   type ToasterAlertHandle = {
-    showToast: (message: string, status: 'success' | 'error' | 'info' | 'warning') => void;
+    showToast: (
+      message: string,
+      status: 'success' | 'error' | 'info' | 'warning'
+    ) => void;
   };
   const toasterRef = useRef<ToasterAlertHandle>(null);
 
   const addItemToCart = (item: Product) => {
-    setCart([...cart, item]);
-    toasterRef.current?.showToast(`${item.name} has been added to your cart!`, "success");
+    console.log('adding item to cart', item);
+    console.log(cart);
+    if (
+      cart.some(({ Product: cartItem }) => {
+        console.log(cartItem.id, item.id);
+        return cartItem.id === item.id;
+      })
+    ) {
+      console.log('item already in cart');
+      if (
+        item.stock_quantity <=
+        // @ts-expect-error we already check for item existence, and quantity can not be undefined
+        cart.find((cartItem) => cartItem.Product.id === item.id)?.quantity
+      ) {
+        toasterRef.current?.showToast(
+          "You can't add more than the available stock!",
+          'error'
+        );
+        return;
+      }
+      if (
+        cart.find((cartItem) => cartItem.Product.id === item.id)?.quantity ===
+        10
+      ) {
+        toasterRef.current?.showToast(
+          "You can't add more than 10 items!",
+          'error'
+        );
+        return;
+      }
+      setCart(
+        cart.map((cartItem) => {
+          if (cartItem.Product.id === item.id) {
+            return {
+              Product: cartItem.Product,
+              quantity: cartItem.quantity + 1,
+            };
+          }
+          return cartItem;
+        })
+      );
+    } else {
+      console.log('item not in cart');
+      setCart([...cart, { Product: item, quantity: 1 }]);
+    }
+    toasterRef.current?.showToast(
+      `${item.name} has been added to your cart!`,
+      'success'
+    );
   };
 
   const removeItemFromCart = (item: Product) => {
-    setCart(cart.filter((cartItem) => cartItem !== item));
-    toasterRef.current?.showToast(`${item.name} has been removed from your cart!`, "info");
+    setCart(cart.filter((cartItem) => cartItem.Product.id !== item.id));
+    toasterRef.current?.showToast(
+      `${item.name} has been removed from your cart!`,
+      'info'
+    );
+  };
+
+  const setQuantity = (item: Product, quantity: number) => {
+    if (quantity <= 0) {
+      removeItemFromCart(item);
+      return;
+    }
+    if (quantity > 10 || quantity > item.stock_quantity) {
+      toasterRef.current?.showToast(
+        "You can't add more than 10 items or more than the available stock!",
+        'error'
+      );
+      return;
+    }
+    setCart(
+      cart.map((cartItem) => {
+        if (cartItem.Product.id === item.id) {
+          return { Product: cartItem.Product, quantity };
+        }
+        return cartItem;
+      })
+    );
   };
 
   const clearCart = () => {
     setCart([]);
-    toasterRef.current?.showToast("Your cart has been cleared!", "info");
+    toasterRef.current?.showToast('Your cart has been cleared!', 'info');
   };
 
   // gets called on first render
@@ -136,7 +213,14 @@ export default function App() {
     <Document>
       <ChakraProvider theme={theme}>
         <UserContext.Provider
-          value={{ user, cart, addItemToCart, removeItemFromCart, clearCart }}
+          value={{
+            user,
+            cart,
+            addItemToCart,
+            removeItemFromCart,
+            clearCart,
+            setQuantity,
+          }}
         >
           <Navbar />
           <Box

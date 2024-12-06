@@ -34,7 +34,8 @@
     "react-snowflakes": "^1.0.0",
     "remix-auth": "^3.6.0",
     "remix-auth-google": "^2.0.0",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "react-hook-form": "^7.53.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.12.1",
