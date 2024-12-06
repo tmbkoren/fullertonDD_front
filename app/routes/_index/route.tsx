@@ -12,27 +12,17 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-interface LoaderData {
-  items: Product[];
-}
-
-export async function loader(): Promise<LoaderData> {
-  try {
-    const data = await fetch(
-      process.env.BACKEND_DEV_URL + '/api/products/getAll'
-    );
-    if (!data.ok) {
-      throw new Error('Failed to fetch products');
-    }
-    const items = (await data.json()) as Product[];
-    return { items };
-  } catch (error) {
-    console.error('Error fetching products:', error);
-    return { items: [] };  // Empty array as fallback
-  }
+export async function loader() {
+  // fetching all products from the backend
+  const data = await fetch(
+    process.env.BACKEND_DEV_URL + '/api/products/getAll'
+  );
+  const items = (await data.json()) as Product[];
+  return { items };
 }
 
 export default function Index() {
+  // using the loader data to display the items
   const { items } = useLoaderData<typeof loader>();
 
   return (
