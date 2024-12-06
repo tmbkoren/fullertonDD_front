@@ -32,7 +32,7 @@ const OrderConfirmationPage = () => {
 
   // Calculate subtotal
   const calculateSubtotal = () => {
-    return cart.reduce((total,item) => {
+    return cart.reduce((total, {Product: item}) => {
       const price = parseFloat(item.price.toString());
       return isNaN(price) ? total : total + price;
     }, 0);
@@ -143,7 +143,7 @@ const OrderConfirmationPage = () => {
             Order Summary
           </Text>
 
-          {cart.map((item) => (
+          {cart.map(({ Product: item }) => (
             <HStack
               key={item.id}
               justify='space-between'
