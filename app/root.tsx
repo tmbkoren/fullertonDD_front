@@ -1,20 +1,25 @@
 // root.tsx
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
+import UserContext from './util/userContext';
 import { withEmotionCache } from '@emotion/react';
 import { Box, ChakraProvider } from '@chakra-ui/react';
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
+  useRouteLoaderData,
 } from '@remix-run/react';
-import { MetaFunction, LinksFunction } from '@remix-run/node'; // Depends on the runtime you choose
+import { MetaFunction, LinksFunction, LoaderFunctionArgs } from '@vercel/remix'; // Depends on the runtime you choose
 
 import { ServerStyleContext, ClientStyleContext } from './context';
 import theme from './util/theme';
+import ToasterAlert from './components/ToasterAlert';
 import Navbar from './components/Navbar';
+import { Product, User } from './util/types';
+import Footer from './components/Footer';
+import { authenticator } from './services/auth.server';
 
 export const meta: MetaFunction = () => {
   return [
@@ -58,6 +63,8 @@ const Document = withEmotionCache(
       });
       // reset cache to reapply global styles
       clientStyleData?.reset();
+      // this is copied from the chakra-ui docs so I have to disable this check
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -77,27 +84,157 @@ const Document = withEmotionCache(
           {children}
           <ScrollRestoration />
           <Scripts />
-          <LiveReload />
         </body>
       </html>
     );
   }
 );
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  const user = await authenticator.isAuthenticated(request);
+  return { user };
+}
+
 export default function App() {
+  const { user } = useRouteLoaderData<typeof loader>('root') || {
+    user: {} as User,
+  };
+  const [cart, setCart] = useState<{ Product: Product; quantity: number }[]>(
+    []
+  );
+  type ToasterAlertHandle = {
+    showToast: (
+      message: string,
+      status: 'success' | 'error' | 'info' | 'warning'
+    ) => void;
+  };
+  const toasterRef = useRef<ToasterAlertHandle>(null);
+
+  const addItemToCart = (item: Product) => {
+    console.log('adding item to cart', item);
+    console.log(cart);
+    if (
+      cart.some(({ Product: cartItem }) => {
+        console.log(cartItem.id, item.id);
+        return cartItem.id === item.id;
+      })
+    ) {
+      console.log('item already in cart');
+      if (
+        item.stock_quantity <=
+        // @ts-expect-error we already check for item existence, and quantity can not be undefined
+        cart.find((cartItem) => cartItem.Product.id === item.id)?.quantity
+      ) {
+        toasterRef.current?.showToast(
+          "You can't add more than the available stock!",
+          'error'
+        );
+        return;
+      }
+      if (
+        cart.find((cartItem) => cartItem.Product.id === item.id)?.quantity ===
+        10
+      ) {
+        toasterRef.current?.showToast(
+          "You can't add more than 10 items!",
+          'error'
+        );
+        return;
+      }
+      setCart(
+        cart.map((cartItem) => {
+          if (cartItem.Product.id === item.id) {
+            return {
+              Product: cartItem.Product,
+              quantity: cartItem.quantity + 1,
+            };
+          }
+          return cartItem;
+        })
+      );
+    } else {
+      console.log('item not in cart');
+      setCart([...cart, { Product: item, quantity: 1 }]);
+    }
+    toasterRef.current?.showToast(
+      `${item.name} has been added to your cart!`,
+      'success'
+    );
+  };
+
+  const removeItemFromCart = (item: Product) => {
+    setCart(cart.filter((cartItem) => cartItem.Product.id !== item.id));
+    toasterRef.current?.showToast(
+      `${item.name} has been removed from your cart!`,
+      'info'
+    );
+  };
+
+  const setQuantity = (item: Product, quantity: number) => {
+    if (quantity <= 0) {
+      removeItemFromCart(item);
+      return;
+    }
+    if (quantity > 10 || quantity > item.stock_quantity) {
+      toasterRef.current?.showToast(
+        "You can't add more than 10 items or more than the available stock!",
+        'error'
+      );
+      return;
+    }
+    setCart(
+      cart.map((cartItem) => {
+        if (cartItem.Product.id === item.id) {
+          return { Product: cartItem.Product, quantity };
+        }
+        return cartItem;
+      })
+    );
+  };
+
+  const clearCart = () => {
+    setCart([]);
+    toasterRef.current?.showToast('Your cart has been cleared!', 'info');
+  };
+
+  // gets called on first render
+  useEffect(() => {
+    const cart = localStorage.getItem('cart');
+    if (cart) {
+      setCart(JSON.parse(cart));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <Document>
       <ChakraProvider theme={theme}>
-        <Navbar />
-        <Box
-          p={3}
-          pb={100}
-          as='main'
-          minH={'100%'}
-          width={'95%'}
+        <UserContext.Provider
+          value={{
+            user,
+            cart,
+            addItemToCart,
+            removeItemFromCart,
+            clearCart,
+            setQuantity,
+          }}
         >
-          <Outlet />
-        </Box>
+          <Navbar />
+          <Box
+            p={3}
+            pb={300}
+            as='main'
+            minH={'100%'}
+            width={'95%'}
+          >
+            <Outlet />
+          </Box>
+          <ToasterAlert ref={toasterRef} />
+          <Footer />
+        </UserContext.Provider>
       </ChakraProvider>
     </Document>
   );

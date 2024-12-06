@@ -1,6 +1,7 @@
-import { vitePlugin as remix } from "@remix-run/dev";
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+import { vitePlugin as remix } from '@remix-run/dev';
+import { defineConfig } from 'vite';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { vercelPreset } from '@vercel/remix/vite';
 
 export default defineConfig({
   plugins: [
@@ -10,7 +11,11 @@ export default defineConfig({
         v3_relativeSplatPath: true,
         v3_throwAbortReason: true,
       },
+      presets: [vercelPreset()],
     }),
     tsconfigPaths(),
   ],
+  ssr: {
+    noExternal: ['react-dropzone'],
+  },
 });
