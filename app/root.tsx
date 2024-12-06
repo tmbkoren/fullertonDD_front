@@ -226,9 +226,10 @@ export default function App() {
           <Box
             p={3}
             pb={300}
-            as='main'
-            minH={'100%'}
-            width={'95%'}
+            as="main"
+            minH={"100%"}
+            maxW="1500px" // Set max width for consistent centering
+            mx="auto"     // Center the Box horizontally
           >
             <Outlet />
           </Box>

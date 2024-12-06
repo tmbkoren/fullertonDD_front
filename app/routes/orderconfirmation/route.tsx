@@ -32,7 +32,7 @@ const OrderConfirmationPage = () => {
 
   // Calculate subtotal
   const calculateSubtotal = () => {
-    return cart.reduce((total, { Product: item }) => {
+    return cart.reduce((total, {Product: item}) => {
       const price = parseFloat(item.price.toString());
       return isNaN(price) ? total : total + price;
     }, 0);
@@ -270,3 +270,4 @@ const OrderConfirmationPage = () => {
 };
 
 export default OrderConfirmationPage;
+
