@@ -15,7 +15,6 @@ export async function loader() {
   const data = await fetch(
     process.env.BACKEND_DEV_URL + '/api/products/getAll'
   );
-  // parsing the response and returning it as an array of products
   const items = (await data.json()) as Product[];
   return { items };
 }
