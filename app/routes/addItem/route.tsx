@@ -97,8 +97,8 @@ const AddItemPage = () => {
           <FormControl>
             <FormLabel htmlFor="category">Category</FormLabel>
             <Input
-              id="category"
-              name="category"
+              id="category_name"
+              name="category_name"  
               type="text"
               placeholder="Enter product category"
               bg={inputBg} // Input background color

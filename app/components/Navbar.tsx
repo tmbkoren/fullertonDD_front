@@ -79,7 +79,10 @@ const Navbar = () => {
             <IconButton
               icon={colorMode === 'light' ? <MdDarkMode /> : <MdOutlineWbSunny />}
               bg={'transparent'}
-              color='white' // Make sure the icon is always white
+              color={'white'}
+              _hover={{
+                bg: colorMode === 'light' ? 'gray.800' : 'gray.700',
+              }}
               aria-label='Toggle Dark Mode'
               onClick={toggleColorMode}
             />

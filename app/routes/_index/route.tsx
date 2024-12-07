@@ -2,6 +2,8 @@ import type { MetaFunction } from '@vercel/remix';
 import ItemDisplayGrid from '~/components/ItemDisplayGrid';
 import { useLoaderData } from '@remix-run/react';
 import { Product } from '~/util/types';
+import HeroSection from '~/components/HeroSection';
+import CategoryFeature from '~/components/CategoryFeature';
 
 export const meta: MetaFunction = () => {
   return [
@@ -22,7 +24,18 @@ export async function loader() {
 export default function Index() {
   // using the loader data to display the items
   const { items } = useLoaderData<typeof loader>();
+
   return (
-      <ItemDisplayGrid itemsToDisplay={items} />
+    <>
+      <HeroSection />
+      <CategoryFeature />
+      <div id="item-display-grid">
+        {items.length > 0 ? (
+          <ItemDisplayGrid itemsToDisplay={items} />
+        ) : (
+          <p>No products available at the moment.</p>
+        )}
+      </div>
+    </>
   );
 }
