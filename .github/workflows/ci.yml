@@ -35,7 +35,7 @@ jobs:
 
         - name: Upload README to S3
           run: |
-            PROJECT_DESCRIPTION="BACKEND for Fullerton Deal Depot Project Group #2"
+            PROJECT_DESCRIPTION="FRONTEND for Fullerton Deal Depot Project Group #2"
             aws s3 cp ./README.md s3://csuf-cpsc-362/README-${PROJECT_DESCRIPTION// /_}.md
     # Run-Tests:
     # will add later
