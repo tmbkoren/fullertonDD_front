@@ -19,5 +19,23 @@ jobs:
               run: npm install
             - name: Run Typechecking
               run: npm run typecheck
+    deploy-to-s3:
+      name: Upload README to S3
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout Code
+          uses: actions/checkout@v3
+
+        - name: Set up AWS Credentials (Professor's)
+          uses: aws-actions/configure-aws-credentials@v1
+          with:
+            aws-access-key-id: ${{ secrets.PROF_AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.PROF_AWS_SECRET_ACCESS_KEY }}
+            aws-region: ${{ secrets.PROF_AWS_DEFAULT_REGION }}
+
+        - name: Upload README to S3
+          run: |
+            PROJECT_DESCRIPTION="BACKEND for Fullerton Deal Depot Project Group #2"
+            aws s3 cp ./README.md s3://csuf-cpsc-362/README-${PROJECT_DESCRIPTION// /_}.md
     # Run-Tests:
     # will add later
