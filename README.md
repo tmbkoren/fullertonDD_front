@@ -60,11 +60,3 @@ Do not touch context.tsx, entry.client\entry.server.tsx, createEmotionCache.ts, 
 
 - 📖 [Remix docs](https://remix.run/docs)
 - [Chakra UI docs](https://v2.chakra-ui.com/docs/components)
-
-
-## TO-DO:
-
-- Fix styling for light/dark theme
-- Create an "About" page
-- Create a "Contact" page
-- Work on the "Cart" page
